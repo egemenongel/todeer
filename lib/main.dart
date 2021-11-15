@@ -1,16 +1,25 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:to_deer/pages/login_page.dart';
-import 'package:to_deer/pages/task_lists_page.dart';
+import 'package:to_deer/services/auth_service.dart';
 import 'package:to_deer/theme/theme.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:to_deer/utils/auth_wrapper.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => TaskListManager()),
+      ChangeNotifierProvider(
+        create: (_) => TaskListManager(),
+      ),
+      Provider<AuthService>(
+        create: (_) => AuthService(FirebaseAuth.instance),
+      ),
+      StreamProvider(
+          create: (context) => context.read<AuthService>().authStateChanges,
+          initialData: null),
     ],
     child: MyApp(),
   ));
@@ -42,7 +51,7 @@ class _MyAppState extends State<MyApp> {
             ),
             title: 'Flutter Demo',
             theme: MyTheme.theme,
-            home: const LoginPage(),
+            home: const AuthWrapper(),
             debugShowCheckedModeBanner: false,
           );
         }
