@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:to_deer/models/task_model.dart';
+import 'package:to_deer/models/task.dart';
 import 'package:to_deer/services/database_service.dart';
 import 'package:to_deer/widgets/task_form.dart';
 

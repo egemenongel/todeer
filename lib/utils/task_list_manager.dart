@@ -1,7 +1,7 @@
 import 'dart:collection';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:to_deer/models/task_model.dart';
+import 'package:to_deer/models/task.dart';
 
 class TaskListManager extends ChangeNotifier {
   String? listTitle;

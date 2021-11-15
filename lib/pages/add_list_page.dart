@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/models/task_model.dart';
+import 'package:to_deer/models/task.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 import 'package:to_deer/widgets/task_form.dart';
 import 'package:to_deer/widgets/bottom_app_bar.dart';

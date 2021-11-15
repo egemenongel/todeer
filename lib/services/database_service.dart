@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:to_deer/models/task_model.dart';
+import 'package:to_deer/models/task.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 
 class DatabaseService {
