@@ -38,6 +38,7 @@ dependencies:
   flutter_slidable: ^0.6.0
   firebase_core:
   cloud_firestore:
+  firebase_auth:
   
 dev_dependencies:
   flutter_test:
