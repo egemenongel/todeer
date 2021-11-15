@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_deer/pages/login_page.dart';
 import 'package:to_deer/pages/task_lists_page.dart';
 import 'package:to_deer/theme/theme.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
@@ -41,7 +42,7 @@ class _MyAppState extends State<MyApp> {
             ),
             title: 'Flutter Demo',
             theme: MyTheme.theme,
-            home: const TaskListsPage(),
+            home: const LoginPage(),
             debugShowCheckedModeBanner: false,
           );
         }
