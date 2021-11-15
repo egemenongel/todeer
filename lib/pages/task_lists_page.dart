@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:to_deer/pages/list_title_page.dart';
+import 'package:to_deer/services/auth_service.dart';
 import 'package:to_deer/services/database_service.dart';
 import 'package:to_deer/services/size_helper.dart';
+import 'package:provider/provider.dart';
 import 'package:to_deer/widgets/task_list_tile.dart';
 
 class TaskListsPage extends StatelessWidget {
@@ -27,14 +29,24 @@ class TaskListsPage extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  child: const Center(
-                    child: Text(
-                      "My Lists",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40.0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      const Text(
+                        "My Lists",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 40.0,
+                        ),
                       ),
-                    ),
+                      IconButton(
+                          onPressed: () =>
+                              context.read<AuthService>().signOut(),
+                          icon: const Icon(
+                            Icons.logout_rounded,
+                            color: Colors.white,
+                          ))
+                    ],
                   ),
                   height: appBarHeight(context),
                   width: double.infinity,
