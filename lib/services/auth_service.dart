@@ -15,6 +15,10 @@ class AuthService {
     }
   }
 
+  Future signInAnon() async {
+    _firebaseAuth.signInAnonymously();
+  }
+
   void signOut() {
     _firebaseAuth.signOut();
   }
