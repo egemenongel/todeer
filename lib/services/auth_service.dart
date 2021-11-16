@@ -1,9 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:to_deer/models/user.dart';
 
 class AuthService {
   final FirebaseAuth _firebaseAuth;
   AuthService(this._firebaseAuth);
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
+  UserModel? _userFromFirebase(User? user) {
+    return user != null ? UserModel(uid: user.uid, email: user.email) : null;
+  }
 
   Future<String?> signUp({String? email, String? password}) async {
     try {
@@ -15,14 +19,14 @@ class AuthService {
     }
   }
 
-  Future signIn({String? email, String? password}) async {
+  Future<dynamic> signIn({String? email, String? password}) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: email!, password: password!);
-      print(_firebaseAuth.currentUser!.uid);
+      UserCredential credential = await _firebaseAuth
+          .signInWithEmailAndPassword(email: email!, password: password!);
+      User? user = credential.user;
+      return _userFromFirebase(user);
     } on FirebaseAuthException catch (e) {
-      print(e.code);
-      return e.code;
+      return e.toString();
     }
   }
 

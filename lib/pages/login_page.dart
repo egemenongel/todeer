@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/constants/form_constants.dart';
-import 'package:to_deer/pages/sign_up_page.dart';
 import 'package:to_deer/services/auth_service.dart';
 
 class LoginPage extends StatelessWidget {
@@ -56,11 +55,13 @@ class LoginPage extends StatelessWidget {
                   width: 65,
                 ),
                 ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        context.read<AuthService>().signIn(
-                            email: emailController.text,
-                            password: passwordController.text);
+                        var currentUser = await context
+                            .read<AuthService>()
+                            .signIn(
+                                email: emailController.text,
+                                password: passwordController.text);
                       }
                     },
                     child: const Text("Login")),
