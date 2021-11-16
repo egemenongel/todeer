@@ -5,8 +5,6 @@ import 'package:to_deer/utils/task_list_manager.dart';
 
 class ListBottomBar extends StatelessWidget {
   const ListBottomBar({Key? key}) : super(key: key);
-  final int taskId = 0;
-  final String? title = "";
   @override
   Widget build(BuildContext context) {
     var _taskListManager = Provider.of<TaskListManager>(context, listen: false);
@@ -32,7 +30,9 @@ class ListBottomBar extends StatelessWidget {
                   onPressed: () {
                     var firestore = DatabaseService();
                     firestore.addList(
-                        _taskListManager.listTitle!, _taskListManager);
+                      _taskListManager.listTitle!,
+                      _taskListManager,
+                    );
                     Navigator.popUntil(context, (route) => route.isFirst);
                     _taskListManager.clearList();
                   },
