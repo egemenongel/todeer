@@ -62,6 +62,9 @@ class LoginPage extends StatelessWidget {
                             .signIn(
                                 email: emailController.text,
                                 password: passwordController.text);
+                        if (currentUser is String) {
+                          print("Error->" + currentUser);
+                        }
                       }
                     },
                     child: const Text("Login")),
