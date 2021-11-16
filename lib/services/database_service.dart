@@ -3,8 +3,21 @@ import 'package:to_deer/models/task.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 
 class DatabaseService {
+  final String? uid;
+  DatabaseService({this.uid});
+
+  CollectionReference usersCollection =
+      FirebaseFirestore.instance.collection("users");
   CollectionReference listsCollection =
       FirebaseFirestore.instance.collection("lists");
+
+  Future updateUserData(
+    String email,
+  ) async {
+    return await usersCollection.doc(uid).set({
+      "email": email,
+    });
+  }
 
   Future<QuerySnapshot> getTaskList(DocumentReference list) async {
     return await list.collection("tasks").get();
