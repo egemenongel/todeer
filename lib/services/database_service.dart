@@ -13,8 +13,10 @@ class DatabaseService {
 
   CollectionReference usersCollection =
       FirebaseFirestore.instance.collection("users");
-  CollectionReference listsCollection =
-      FirebaseFirestore.instance.collection("lists");
+  CollectionReference listsCollection = FirebaseFirestore.instance
+      .collection("storage")
+      .doc(FirebaseAuth.instance.currentUser!.uid)
+      .collection("lists");
 
   Future updateUserData(
     String email,
@@ -34,11 +36,7 @@ class DatabaseService {
         .collection("storage")
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .set({"storage": "storage"});
-    CollectionReference lists = _firestore
-        .collection("storage")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .collection("lists");
-    var list = lists.doc();
+    var list = listsCollection.doc();
     list.set({"title": listTitle});
     for (TaskModel task in taskListManager.taskList) {
       list.collection("tasks").doc().set({
@@ -88,34 +86,4 @@ class DatabaseService {
   void checkboxToggle(QueryDocumentSnapshot doc, bool checkboxState) {
     doc.reference.update({"isCompleted": checkboxState});
   }
-
-  // // Future<void> newMethod(String listTitle) async {
-  // //   CollectionReference lists = FirebaseFirestore.instance.collection("list");
-  // //   DocumentSnapshot snapshot = await lists.doc("list1").get();
-  // //   var data = snapshot.data() as Map;
-  // //   var tasksData = data["tasks"] as List<dynamic>;
-  // //   // print(data["tasks"][1]["isCompleted"]);
-
-  // //   CollectionReference myLists =
-  // //       FirebaseFirestore.instance.collection("lists");
-  // //   DocumentSnapshot list = await myLists.doc("list1").get();
-  // //   DocumentSnapshot task = await list.reference
-  // //       .collection("tasks")
-  // //       .doc("8B7Sv8YUgM36sW2jR6Wf")
-  // //       .get();
-  // //   CollectionReference col = list.reference.collection("tasks");
-  // //   List<dynamic> taskList = await col.snapshots().toList();
-
-  // //   List<DocumentSnapshot> aaa = [];
-  // //   // DocumentSnapshot task1 = await col.doc("task1").get();
-
-  // //   // col.get().then((snapshot) => snapshot.docs.forEach((task) {
-  // //   //       print(task.data());
-  // //   //     }));
-  // //   // var t1 = task1.data() as Map;
-  // //   // var list1Data = list.data() as Map;
-
-  // //   // print(task["isCompleted"]);
-  // // }
-
 }
