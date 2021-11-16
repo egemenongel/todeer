@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_deer/pages/report_widget.dart';
 import 'package:to_deer/services/database_service.dart';
 import 'package:to_deer/pages/list_title_page.dart';
 import 'package:to_deer/services/size_helper.dart';
+import 'package:to_deer/utils/task_list_manager.dart';
 import 'package:to_deer/widgets/dialogs/add_task_dialog.dart';
 import 'package:to_deer/widgets/dialogs/delete_task_dialog.dart';
 import 'package:to_deer/widgets/task_tile.dart';
@@ -97,28 +100,48 @@ class ListPage extends StatelessWidget {
                                     MainAxisAlignment.spaceAround,
                                 children: [
                                   FloatingActionButton(
-                                    backgroundColor: Colors.blueGrey,
+                                    tooltip: "Add task",
                                     heroTag: null,
-                                    child: const Icon(
-                                      Icons.add,
-                                    ),
-                                    onPressed: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (context) => Column(
+                                    onPressed: () => showDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            SingleChildScrollView(
+                                              child: Column(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.end,
                                                 children: [
                                                   AddTaskDialog(list: list!),
                                                 ],
-                                              ));
-                                    },
+                                              ),
+                                            )),
+                                    child: const Icon(
+                                      Icons.add,
+                                    ),
                                   ),
                                   FloatingActionButton(
-                                    backgroundColor: Colors.blueGrey,
+                                    tooltip: "See report",
+                                    heroTag: null,
+                                    onPressed: () {
+                                      Provider.of<TaskListManager>(context,
+                                              listen: false)
+                                          .sumDuration(snapshot.data.docs);
+                                      showModalBottomSheet(
+                                        backgroundColor: Colors.transparent,
+                                        context: context,
+                                        builder: (context) => ReportWidget(
+                                            list: list,
+                                            title: list!.get("title")),
+                                      );
+                                    },
+                                    child: const Icon(
+                                      Icons.pending_actions_rounded,
+                                    ),
+                                  ),
+                                  FloatingActionButton(
+                                    tooltip: "Add list",
                                     heroTag: null,
                                     child: const Icon(
-                                      Icons.add_box_outlined,
+                                      Icons.my_library_add_outlined,
                                     ),
                                     onPressed: () {
                                       Navigator.push(
