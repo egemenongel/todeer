@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/constants/form_constants.dart';
-import 'package:to_deer/pages/login_page.dart';
 import 'package:to_deer/services/auth_service.dart';
 
 class SignUpPage extends StatelessWidget {
