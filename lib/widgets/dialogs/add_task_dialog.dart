@@ -18,6 +18,7 @@ class AddTaskDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      scrollable: true,
       backgroundColor: Colors.orange,
       insetPadding: const EdgeInsets.symmetric(horizontal: 20),
       contentPadding: EdgeInsets.zero,
@@ -26,16 +27,14 @@ class AddTaskDialog extends StatelessWidget {
           side: const BorderSide(
             color: Colors.orange,
           )),
-      content: SingleChildScrollView(
-        child: TaskForm(
-          formKey: _formKey,
-          taskTitle: taskTitle,
-          startTime: startTime,
-          finishTime: finishTime,
-          duration: duration,
-          dueDate: dueDate,
-          notes: notes,
-        ),
+      content: TaskForm(
+        formKey: _formKey,
+        taskTitle: taskTitle,
+        startTime: startTime,
+        finishTime: finishTime,
+        duration: duration,
+        dueDate: dueDate,
+        notes: notes,
       ),
       actions: [
         TextButton(

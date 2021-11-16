@@ -38,7 +38,9 @@ class EditTaskDialog extends StatelessWidget {
         duration.text = task["duration"];
         dueDate.text = task["dueDate"];
         notes.text = task["notes"];
-        return AlertDialog(
+        return SingleChildScrollView(
+            child: AlertDialog(
+          scrollable: true,
           backgroundColor: Colors.orange,
           insetPadding: const EdgeInsets.symmetric(horizontal: 20),
           contentPadding: EdgeInsets.zero,
@@ -48,16 +50,14 @@ class EditTaskDialog extends StatelessWidget {
               side: const BorderSide(
                 color: Colors.orange,
               )),
-          content: SingleChildScrollView(
-            child: TaskForm(
-              formKey: _formKey,
-              taskTitle: taskTitle,
-              startTime: startTime,
-              finishTime: finishTime,
-              duration: duration,
-              dueDate: dueDate,
-              notes: notes,
-            ),
+          content: TaskForm(
+            formKey: _formKey,
+            taskTitle: taskTitle,
+            startTime: startTime,
+            finishTime: finishTime,
+            duration: duration,
+            dueDate: dueDate,
+            notes: notes,
           ),
           actions: [
             TextButton(
@@ -84,7 +84,7 @@ class EditTaskDialog extends StatelessWidget {
                 child: const Text("Cancel"))
           ],
           actionsAlignment: MainAxisAlignment.spaceBetween,
-        );
+        ));
       },
     );
   }
