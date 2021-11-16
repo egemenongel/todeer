@@ -40,8 +40,9 @@ class TaskListsPage extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                          onPressed: () =>
-                              context.read<AuthService>().signOut(),
+                          onPressed: () {
+                            context.read<AuthService>().signOut();
+                          },
                           icon: const Icon(
                             Icons.logout_rounded,
                             color: Colors.white,
