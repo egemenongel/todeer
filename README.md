@@ -1,4 +1,4 @@
-# to-do-list
+# todeer
 
 ## Description
 
@@ -25,7 +25,8 @@ A simple To Do List built with Flutter. Used Provider Package for State Manageme
 * [X] Media query sizing.
 * [X] Dialog boxes to ask to user if they are sure about the action.
 * [X] Completed task count.
-* [ ] Firebase Auth.
+* [X] Firebase Auth.
+* [ ] Login/Sign Up errors.
 * [ ] Completed tasks to bottom.
 * [ ] Show due date, notes on tiles?
 * [ ] Report page for tasks.
