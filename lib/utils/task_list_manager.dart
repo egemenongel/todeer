@@ -83,6 +83,7 @@ class TaskListManager extends ChangeNotifier {
       }
     }
     total = sum;
+    notifyListeners();
   }
 
   // void durationCalculator(TimeOfDay start, TimeOfDay finish) {
