@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_deer/constants/form_constants.dart';
+import 'package:to_deer/pages/sign_up_page.dart';
 import 'package:to_deer/services/auth_service.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({
     Key? key,
+    this.toggleCallback,
   }) : super(key: key);
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final VoidCallback? toggleCallback;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,11 +29,20 @@ class LoginPage extends StatelessWidget {
                     controller: emailController,
                     validator: (val) =>
                         val!.isEmpty ? "Please enter your email" : null,
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.account_circle_rounded),
+                        labelText: "E-mail",
+                        border: formFieldBorder()),
                   ),
+                  const SizedBox(height: 15.0),
                   TextFormField(
                     controller: passwordController,
                     validator: (val) =>
                         val!.isEmpty ? "Please enter your password" : null,
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.vpn_key_rounded),
+                        labelText: "Password",
+                        border: formFieldBorder()),
                   ),
                 ],
               ),
@@ -37,15 +50,31 @@ class LoginPage extends StatelessWidget {
             const SizedBox(
               height: 10.0,
             ),
-            ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    context.read<AuthService>().signIn(
-                        email: emailController.text,
-                        password: passwordController.text);
-                  }
-                },
-                child: const Text("Login")),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 65,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        context.read<AuthService>().signIn(
+                            email: emailController.text,
+                            password: passwordController.text);
+                      }
+                    },
+                    child: const Text("Login")),
+                const SizedBox(
+                  width: 65,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<AuthService>().signInAnon();
+                  },
+                  child: const Text("Continue as guest"),
+                )
+              ],
+            ),
             //Error box
             const SizedBox(
               height: 10.0,
@@ -75,10 +104,8 @@ class LoginPage extends StatelessWidget {
               ],
             ),
             TextButton(
-              onPressed: () {
-                context.read<AuthService>().signInAnon();
-              },
-              child: const Text("SKIP"),
+              onPressed: toggleCallback,
+              child: const Text("Sign Up"),
             )
           ],
         ),
