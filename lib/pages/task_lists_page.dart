@@ -23,7 +23,6 @@ class TaskListsPage extends StatelessWidget {
         return Scaffold(
           extendBodyBehindAppBar: true,
           appBar: AppBar(
-            titleSpacing: 0.0,
             actions: [
               IconButton(
                   onPressed: () {
