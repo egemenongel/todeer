@@ -19,45 +19,52 @@ class EditListDialog extends StatelessWidget {
           );
         }
         listTitle.text = snapshot.data["title"];
-        return SizedBox(
-          child: AlertDialog(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-                side: const BorderSide(
-                  color: Colors.deepPurple,
-                )),
-            title: const Text("Change List Name"),
-            content: Form(
+        return AlertDialog(
+          backgroundColor: Colors.red,
+          insetPadding: const EdgeInsets.symmetric(horizontal: 20.0),
+          contentPadding: EdgeInsets.zero,
+          titlePadding: const EdgeInsets.all(10.0),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              side: const BorderSide(
+                color: Colors.red,
+              )),
+          content: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.deepOrange[100],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Form(
               key: _formKey,
-              child: SizedBox(
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)))),
-                  controller: listTitle,
-                  validator: (val) => listTitle.text.isEmpty
-                      ? "Please enter a list title"
-                      : null,
-                ),
-                height: 250.0,
+              child: TextFormField(
+                autofocus: true,
+                controller: listTitle,
+                validator: (val) =>
+                    listTitle.text.isEmpty ? "Please enter a list title" : null,
               ),
             ),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      firestore.editList(snapshot.data, listTitle.text);
-                      Navigator.pop(context);
-                    }
-                  },
-                  child: const Text("Edit")),
-              TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text("Cancel"))
-            ],
-            actionsAlignment: MainAxisAlignment.spaceBetween,
           ),
-          height: 300.0,
+          actions: [
+            TextButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    firestore.editList(snapshot.data, listTitle.text);
+                    Navigator.pop(context);
+                  }
+                },
+                child: const Text(
+                  "Edit",
+                  style: TextStyle(color: Colors.white),
+                )),
+            TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text(
+                  "Cancel",
+                  style: TextStyle(color: Colors.white),
+                ))
+          ],
+          actionsAlignment: MainAxisAlignment.spaceBetween,
         );
       },
     );
