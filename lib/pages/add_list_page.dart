@@ -16,7 +16,12 @@ class AddListPage extends StatelessWidget {
   final notes = TextEditingController();
   void _clearForm() {
     _formKey.currentState!.reset();
-    // Does not clear date and times.
+    taskTitle.clear();
+    startTime.clear();
+    finishTime.clear();
+    duration.clear();
+    dueDate.clear();
+    notes.clear();
   }
 
   @override
