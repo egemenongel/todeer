@@ -12,6 +12,8 @@ class TaskTile extends StatelessWidget {
     required this.startTime,
     required this.finishTime,
     required this.duration,
+    required this.dueDate,
+    required this.notes,
     required this.isCompleted,
     required this.checkboxCallback,
     required this.deleteCallback,
@@ -24,6 +26,8 @@ class TaskTile extends StatelessWidget {
   final String startTime;
   final String finishTime;
   final String duration;
+  final String dueDate;
+  final String notes;
   final bool isCompleted;
   final void Function(bool?)? checkboxCallback;
   final void Function()? deleteCallback;
@@ -37,15 +41,62 @@ class TaskTile extends StatelessWidget {
             borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(10), topLeft: Radius.circular(10))),
         child: ListTile(
-            title: Text(
-              taskTitle,
-              style: TextStyle(
-                  color: (index % 2) == 1 ? Colors.indigo : Colors.blue[900],
-                  decoration: isCompleted
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none,
-                  decorationColor:
-                      (index % 2) == 1 ? Colors.orange : Colors.deepOrange),
+            horizontalTitleGap: 10.0,
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  taskTitle,
+                  style: TextStyle(
+                      color:
+                          (index % 2) == 1 ? Colors.indigo : Colors.blue[900],
+                      decoration: isCompleted
+                          ? TextDecoration.lineThrough
+                          : TextDecoration.none,
+                      decorationColor:
+                          (index % 2) == 1 ? Colors.orange : Colors.deepOrange),
+                ),
+                Row(
+                  children: [
+                    if (dueDate.isNotEmpty) ...[
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.date_range,
+                            size: 12.0,
+                            color: Colors.indigo,
+                          ),
+                          const SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(
+                            dueDate,
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12.0,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                        ],
+                      ),
+                    ] else ...[
+                      const SizedBox(),
+                    ],
+                    if (notes.isNotEmpty) ...[
+                      Icon(
+                        Icons.sticky_note_2_sharp,
+                        color: Colors.indigo,
+                        size: 12.0,
+                      ),
+                    ],
+                  ],
+                ),
+              ],
             ),
             leading: Checkbox(
               shape: RoundedRectangleBorder(
@@ -54,7 +105,8 @@ class TaskTile extends StatelessWidget {
               onChanged: checkboxCallback,
               activeColor: (index % 2) == 1 ? Colors.orange : Colors.deepOrange,
             ),
-            trailing: SizedBox(
+            trailing: Container(
+              alignment: Alignment.center,
               width: displayWidth(context) / 4,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,

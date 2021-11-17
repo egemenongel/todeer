@@ -68,6 +68,8 @@ class ListPage extends StatelessWidget {
                                       finishTime: task["finishTime"],
                                       duration: task["duration"],
                                       isCompleted: task["isCompleted"],
+                                      dueDate: task["dueDate"],
+                                      notes: task["notes"],
                                       checkboxCallback: (checkboxState) =>
                                           firestore.checkboxToggle(
                                               task, checkboxState!),
