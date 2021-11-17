@@ -41,11 +41,11 @@ class EditTaskDialog extends StatelessWidget {
         return AlertDialog(
           scrollable: true,
           backgroundColor: Colors.red,
-          insetPadding: const EdgeInsets.symmetric(horizontal: 20),
+          insetPadding: const EdgeInsets.symmetric(horizontal: 20.0),
           contentPadding: EdgeInsets.zero,
           titlePadding: const EdgeInsets.all(10.0),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.0),
               side: const BorderSide(
                 color: Colors.red,
               )),
