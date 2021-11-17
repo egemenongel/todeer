@@ -75,8 +75,15 @@ class TaskListManager extends ChangeNotifier {
         }
         if ((task.get("startTime").toString().length > 1) &&
             task.get("finishTime").toString().length > 1) {
-          sum +=
-              durationCalculator(task.get("startTime"), task.get("finishTime"));
+          if (int.parse(task.get("startTime").toString().split(":")[0]) >
+              int.parse(task.get("finishTime").toString().split(":")[0])) {
+            sum += 24 * 60 +
+                durationCalculator(task.get("startTime"),
+                    task.get("finishTime")); // Absolute value
+          } else {
+            sum += durationCalculator(
+                task.get("startTime"), task.get("finishTime"));
+          }
         } else {
           sum = sum;
         }
