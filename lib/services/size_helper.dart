@@ -23,3 +23,7 @@ double bottomBar(BuildContext context) {
 double taskFormWidth(BuildContext context) {
   return displayWidth(context) / 1.25;
 }
+
+double logoHeight(BuildContext context) {
+  return displayHeight(context) / 4;
+}
