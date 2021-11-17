@@ -19,7 +19,7 @@ class AuthService {
       await DatabaseService(uid: user!.uid).updateUserData(email);
       return _userFromFirebase(user);
     } on FirebaseAuthException catch (e) {
-      return e.toString();
+      return e.code.toString();
     }
   }
 
