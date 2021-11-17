@@ -51,10 +51,8 @@ class LoginPage extends StatelessWidget {
               height: 10.0,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const SizedBox(
-                  width: 65,
-                ),
                 ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
@@ -65,14 +63,11 @@ class LoginPage extends StatelessWidget {
                       }
                     },
                     child: const Text("Login")),
-                const SizedBox(
-                  width: 65,
-                ),
                 ElevatedButton(
                   onPressed: () {
                     context.read<AuthService>().signInAnon();
                   },
-                  child: const Text("Continue as guest"),
+                  child: const Text("Skip"),
                 )
               ],
             ),
