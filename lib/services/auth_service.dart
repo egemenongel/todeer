@@ -30,7 +30,7 @@ class AuthService {
       User? user = credential.user;
       return _userFromFirebase(user);
     } on FirebaseAuthException catch (e) {
-      return e.toString();
+      return e.code.toString();
     }
   }
 
