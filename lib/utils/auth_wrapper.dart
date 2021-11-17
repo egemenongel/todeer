@@ -24,7 +24,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
   Widget build(BuildContext context) {
     final user = context.watch<User?>();
     if (user != null) {
-      return const TaskListsPage();
+      return TaskListsPage();
     }
     if (showLogin) {
       return LoginPage(toggleCallback: toggle);
