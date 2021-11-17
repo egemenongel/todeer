@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/services/size_helper.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
@@ -236,6 +237,9 @@ class _TaskFormState extends State<TaskForm> {
                                 child: Column(
                                   children: [
                                     TextFormField(
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(4),
+                                      ],
                                       onChanged: (value) {
                                         if (value.isNotEmpty) {
                                           setState(() {
