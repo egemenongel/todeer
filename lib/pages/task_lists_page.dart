@@ -24,15 +24,15 @@ class TaskListsPage extends StatelessWidget {
         return Scaffold(
           key: _key,
           extendBodyBehindAppBar: true,
-          endDrawer: Container(
+          endDrawer: SizedBox(
             width: displayWidth(context) / 3,
             child: Drawer(
                 child: Container(
-              color: Colors.indigo,
+              color: Colors.indigoAccent,
               child: ListView(
                 children: [
-                  ListTile(
-                    title: const CircleAvatar(
+                  const ListTile(
+                    title: CircleAvatar(
                       child: Icon(
                         Icons.person,
                       ),
@@ -41,7 +41,7 @@ class TaskListsPage extends StatelessWidget {
                   ListTile(
                     title: Text(
                       "${FirebaseAuth.instance.currentUser!.email}",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 10.0,
                         color: Colors.white,
                       ),
@@ -66,7 +66,7 @@ class TaskListsPage extends StatelessWidget {
                     _key.currentState!.openEndDrawer();
                   },
                   icon: const Icon(
-                    Icons.person_rounded,
+                    Icons.menu_rounded,
                     color: Colors.white,
                   )),
             ],
