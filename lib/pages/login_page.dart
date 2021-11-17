@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/constants/form_constants.dart';
 import 'package:to_deer/services/auth_service.dart';
+import 'package:to_deer/utils/form_manager.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({
@@ -57,14 +59,10 @@ class LoginPage extends StatelessWidget {
                 ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        var currentUser = await context
-                            .read<AuthService>()
-                            .signIn(
-                                email: emailController.text,
-                                password: passwordController.text);
-                        if (currentUser is String) {
-                          print("Error->" + currentUser);
-                        }
+                        var result = await context.read<AuthService>().signIn(
+                            email: emailController.text,
+                            password: passwordController.text);
+                        context.read<FormManager>().errorSetter(result);
                       }
                     },
                     child: const Text("Login")),
@@ -79,7 +77,17 @@ class LoginPage extends StatelessWidget {
                 )
               ],
             ),
-            //Error box
+            const SizedBox(
+              height: 5.0,
+            ),
+            Consumer<FormManager>(builder: (_, _formManager, ___) {
+              return Text(
+                _formManager.loginErrorText,
+                style: const TextStyle(
+                  color: Colors.red,
+                ),
+              );
+            }),
             const SizedBox(
               height: 10.0,
             ),
