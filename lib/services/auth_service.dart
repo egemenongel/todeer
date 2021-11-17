@@ -38,7 +38,7 @@ class AuthService {
     try {
       await _firebaseAuth.signInAnonymously();
     } on FirebaseAuthException catch (e) {
-      print(e.code);
+      return e.code.toString();
     }
   }
 

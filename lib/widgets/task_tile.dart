@@ -79,7 +79,7 @@ class TaskTile extends StatelessWidget {
                               fontSize: 12.0,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5.0,
                           ),
                         ],
@@ -88,7 +88,7 @@ class TaskTile extends StatelessWidget {
                       const SizedBox(),
                     ],
                     if (notes.isNotEmpty) ...[
-                      Icon(
+                      const Icon(
                         Icons.sticky_note_2_sharp,
                         color: Colors.indigo,
                         size: 12.0,
