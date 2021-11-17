@@ -26,12 +26,17 @@ A simple To Do List built with Flutter. Used Provider Package for State Manageme
 * [X] Dialog boxes to ask to user if they are sure about the action.
 * [X] Completed task count.
 * [X] Firebase Auth.
-* [ ] Login/Sign Up errors.
-* [ ] Completed tasks to bottom.
-* [ ] Show due date, notes on tiles?
-* [ ] Report page for tasks.
-* [ ] Gridview for Lists. 
+* [X] Report page for tasks.
+* [X] Login/Sign Up errors.
+* [X] Add/Edit task dialogs.
+* [X] Negative duration value. 
+* [X] Show due date, notes on tiles?
+* [X] Drawer.
 
+* [X] Splash Screen
+* [X] Logo
+
+* [ ] Completed tasks to bottom.
 * [ ] Ordering tasks and lists.
 * [ ] Notification on due date.
 * [ ] Store locally?
@@ -39,7 +44,13 @@ A simple To Do List built with Flutter. Used Provider Package for State Manageme
 * [ ] Add license.
 * [ ] Test the app.
 * [ ] Release.
-* [X] BUG! Sometimes delete list method is not working.
+    BUGS
+
+* [X] Sometimes delete list method is not working.
+* [X] Task tile details sizing should be fixed.
+* [X] On landscape mode app bar does not fit.
+* [X] App bar safe area.
+* [ ] Clear form when adding tasks.
 
 ## Screenshots
 
