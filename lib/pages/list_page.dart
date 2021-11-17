@@ -25,22 +25,24 @@ class ListPage extends StatelessWidget {
           );
         }
         return Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            toolbarHeight: appBarHeight(context),
+            backgroundColor: Colors.red,
+            shadowColor: Colors.indigo,
+            title: Text(
+              "${list!["title"]}",
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 40.0,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ),
           body: Container(
             color: Colors.red,
             child: Column(
               children: [
-                SizedBox(
-                    height: appBarHeight(context),
-                    child: Center(
-                      child: Text(
-                        "${list!["title"]}",
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 40.0,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    )),
                 Expanded(
                     child: Container(
                         padding: const EdgeInsets.only(top: 20),
