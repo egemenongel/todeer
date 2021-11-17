@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
                   MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
               child: child!,
             ),
-            title: 'Flutter Demo',
+            title: 'ToDeer',
             theme: MyTheme.theme,
             home: const AuthWrapper(),
             debugShowCheckedModeBanner: false,
