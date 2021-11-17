@@ -21,6 +21,35 @@ class TaskListsPage extends StatelessWidget {
           );
         }
         return Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            titleSpacing: 0.0,
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    context.read<AuthService>().signOut();
+                  },
+                  icon: const Icon(
+                    Icons.person_rounded,
+                    color: Colors.white,
+                  ))
+            ],
+            toolbarHeight: appBarHeight(context),
+            backgroundColor: Colors.red,
+            shadowColor: Colors.indigo,
+            title: SizedBox(
+              height: logoHeight(context),
+              child: const Image(
+                fit: BoxFit.fitWidth,
+                color: Colors.white,
+                image: AssetImage("images/icons/24.png"),
+              ),
+            ),
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(50),
+            )),
+          ),
           body: Container(
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
@@ -28,35 +57,37 @@ class TaskListsPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const Text(
-                        "My Lists",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 40.0,
-                        ),
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            context.read<AuthService>().signOut();
-                          },
-                          icon: const Icon(
-                            Icons.logout_rounded,
-                            color: Colors.white,
-                          ))
-                    ],
-                  ),
-                  height: appBarHeight(context),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: Colors.orange[700],
-                      borderRadius: const BorderRadius.only(
-                        bottomRight: Radius.circular(50),
-                      )),
-                ),
+                // Container(
+                //   child: SafeArea(
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //       children: [
+                //         const Text(
+                //           "My Lists",
+                //           style: TextStyle(
+                //             color: Colors.white,
+                //             fontSize: 40.0,
+                //           ),
+                //         ),
+                //         IconButton(
+                //             onPressed: () {
+                //               context.read<AuthService>().signOut();
+                //             },
+                //             icon: const Icon(
+                //               Icons.logout_rounded,
+                //               color: Colors.white,
+                //             ))
+                //       ],
+                //     ),
+                //   ),
+                //   height: appBarHeight(context),
+                //   width: double.infinity,
+                //   decoration: BoxDecoration(
+                //       color: Colors.orange[700],
+                //       borderRadius: const BorderRadius.only(
+                //         bottomRight: Radius.circular(50),
+                //       )),
+                // ),
                 Expanded(
                     child: Container(
                         padding: const EdgeInsets.all(20),
