@@ -26,7 +26,7 @@ class ListPage extends StatelessWidget {
         }
         return Scaffold(
           body: Container(
-            color: Colors.orange[700],
+            color: Colors.red,
             child: Column(
               children: [
                 SizedBox(
