@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:to_deer/pages/list_title_page.dart';
 import 'package:to_deer/services/auth_service.dart';
@@ -7,8 +8,8 @@ import 'package:provider/provider.dart';
 import 'package:to_deer/widgets/task_list_tile.dart';
 
 class TaskListsPage extends StatelessWidget {
-  const TaskListsPage({Key? key}) : super(key: key);
-
+  TaskListsPage({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     var firestore = DatabaseService();
@@ -21,17 +22,53 @@ class TaskListsPage extends StatelessWidget {
           );
         }
         return Scaffold(
+          key: _key,
           extendBodyBehindAppBar: true,
+          endDrawer: Container(
+            width: displayWidth(context) / 3,
+            child: Drawer(
+                child: Container(
+              color: Colors.indigo,
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: const CircleAvatar(
+                      child: Icon(
+                        Icons.person,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    title: Text(
+                      "${FirebaseAuth.instance.currentUser!.email}",
+                      style: TextStyle(
+                        fontSize: 10.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    title: IconButton(
+                        onPressed: () => context.read<AuthService>().signOut(),
+                        icon: const Icon(
+                          Icons.power_settings_new,
+                          color: Colors.white,
+                        )),
+                  )
+                ],
+              ),
+            )),
+          ),
           appBar: AppBar(
             actions: [
               IconButton(
                   onPressed: () {
-                    context.read<AuthService>().signOut();
+                    _key.currentState!.openEndDrawer();
                   },
                   icon: const Icon(
                     Icons.person_rounded,
                     color: Colors.white,
-                  ))
+                  )),
             ],
             toolbarHeight: appBarHeight(context),
             backgroundColor: Colors.red,
@@ -56,37 +93,6 @@ class TaskListsPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                // Container(
-                //   child: SafeArea(
-                //     child: Row(
-                //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //       children: [
-                //         const Text(
-                //           "My Lists",
-                //           style: TextStyle(
-                //             color: Colors.white,
-                //             fontSize: 40.0,
-                //           ),
-                //         ),
-                //         IconButton(
-                //             onPressed: () {
-                //               context.read<AuthService>().signOut();
-                //             },
-                //             icon: const Icon(
-                //               Icons.logout_rounded,
-                //               color: Colors.white,
-                //             ))
-                //       ],
-                //     ),
-                //   ),
-                //   height: appBarHeight(context),
-                //   width: double.infinity,
-                //   decoration: BoxDecoration(
-                //       color: Colors.orange[700],
-                //       borderRadius: const BorderRadius.only(
-                //         bottomRight: Radius.circular(50),
-                //       )),
-                // ),
                 Expanded(
                     child: Container(
                         padding: const EdgeInsets.all(20),
