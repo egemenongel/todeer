@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/constants/form_constants.dart';
@@ -62,7 +61,7 @@ class LoginPage extends StatelessWidget {
                         var result = await context.read<AuthService>().signIn(
                             email: emailController.text,
                             password: passwordController.text);
-                        context.read<FormManager>().errorSetter(result);
+                        context.read<FormManager>().setLoginError(result);
                       }
                     },
                     child: const Text("Login")),
@@ -80,9 +79,9 @@ class LoginPage extends StatelessWidget {
             const SizedBox(
               height: 5.0,
             ),
-            Consumer<FormManager>(builder: (_, _formManager, ___) {
+            Consumer<FormManager>(builder: (_, formManager, ___) {
               return Text(
-                _formManager.loginErrorText,
+                formManager.loginErrorText,
                 style: const TextStyle(
                   color: Colors.red,
                 ),
