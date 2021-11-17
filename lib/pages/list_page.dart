@@ -103,17 +103,10 @@ class ListPage extends StatelessWidget {
                                     tooltip: "Add task",
                                     heroTag: null,
                                     onPressed: () => showDialog(
-                                        context: context,
-                                        builder: (context) =>
-                                            SingleChildScrollView(
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  AddTaskDialog(list: list!),
-                                                ],
-                                              ),
-                                            )),
+                                      context: context,
+                                      builder: (_) =>
+                                          AddTaskDialog(list: list!),
+                                    ),
                                     child: const Icon(
                                       Icons.add,
                                     ),

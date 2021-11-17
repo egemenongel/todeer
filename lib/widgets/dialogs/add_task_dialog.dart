@@ -19,13 +19,13 @@ class AddTaskDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       scrollable: true,
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.red,
       insetPadding: const EdgeInsets.symmetric(horizontal: 20),
       contentPadding: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
           side: const BorderSide(
-            color: Colors.orange,
+            color: Colors.red,
           )),
       content: TaskForm(
         formKey: _formKey,
@@ -55,10 +55,16 @@ class AddTaskDialog extends StatelessWidget {
                 Navigator.pop(context);
               }
             },
-            child: const Text("Add")),
+            child: const Text(
+              "Add",
+              style: TextStyle(color: Colors.white),
+            )),
         TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text("Cancel"))
+            child: const Text(
+              "Cancel",
+              style: TextStyle(color: Colors.white),
+            ))
       ],
       actionsAlignment: MainAxisAlignment.spaceBetween,
     );
