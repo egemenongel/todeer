@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.egemenongel.to_deer">
    <application
-        android:label="to_deer"
+        android:label="ToDeer"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
