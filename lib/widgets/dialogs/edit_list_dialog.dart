@@ -21,7 +21,9 @@ class EditListDialog extends StatelessWidget {
         listTitle.text = snapshot.data["title"];
         return AlertDialog(
           backgroundColor: Colors.red,
-          insetPadding: const EdgeInsets.symmetric(horizontal: 20.0),
+          insetPadding: const EdgeInsets.symmetric(
+            horizontal: 20.0,
+          ),
           contentPadding: EdgeInsets.zero,
           titlePadding: const EdgeInsets.all(10.0),
           shape: RoundedRectangleBorder(
@@ -30,7 +32,7 @@ class EditListDialog extends StatelessWidget {
                 color: Colors.red,
               )),
           content: Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Colors.deepOrange[100],
               borderRadius: BorderRadius.circular(10),
