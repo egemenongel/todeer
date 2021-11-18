@@ -45,6 +45,7 @@ class ListPage extends StatelessWidget {
               children: [
                 Expanded(
                     child: Container(
+                        width: displayWidth(context),
                         padding: const EdgeInsets.only(top: 20),
                         decoration: const BoxDecoration(
                           color: Colors.indigo,
