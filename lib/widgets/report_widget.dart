@@ -59,7 +59,7 @@ class ReportWidget extends StatelessWidget {
                     "${context.read<TaskListManager>().total} minutes",
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 30.0,
+                      fontSize: 25.0,
                     ),
                   ),
                 ),
