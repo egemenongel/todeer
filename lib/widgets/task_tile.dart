@@ -64,10 +64,10 @@ class TaskTile extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.date_range,
                             size: 12.0,
-                            color: Colors.indigo,
+                            color: Colors.indigo[900],
                           ),
                           const SizedBox(
                             width: 5.0,
@@ -88,9 +88,9 @@ class TaskTile extends StatelessWidget {
                       const SizedBox(),
                     ],
                     if (notes.isNotEmpty) ...[
-                      const Icon(
+                      Icon(
                         Icons.sticky_note_2_sharp,
-                        color: Colors.indigo,
+                        color: Colors.indigo[900],
                         size: 12.0,
                       ),
                     ],
@@ -139,7 +139,7 @@ class TaskTile extends StatelessWidget {
                       : const SizedBox(),
                   finishTime != "" && startTime != ""
                       ? const SizedBox(
-                          width: 5.0,
+                          width: 2.0,
                         )
                       : const SizedBox(),
                   finishTime != ""
