@@ -34,7 +34,7 @@ class ListPage extends StatelessWidget {
               "${list!["title"]}",
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 40.0,
+                fontSize: 32.0,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
