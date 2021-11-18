@@ -26,7 +26,9 @@ class TaskListTile extends StatelessWidget {
       builder: (_, AsyncSnapshot snapshot) {
         if (!snapshot.hasData) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              color: Colors.indigo,
+            ),
           );
         }
         return Slidable(
