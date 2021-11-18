@@ -37,7 +37,7 @@ class ReportWidget extends StatelessWidget {
                 height: 20,
               ),
               const Text(
-                "You have totally spent",
+                "You totally spent",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.0,
