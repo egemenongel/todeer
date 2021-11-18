@@ -126,7 +126,7 @@ class _TaskFormState extends State<TaskForm> {
                           height: 10.0,
                         ),
                         const Text(
-                          "Target complete time",
+                          "Target completion time",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.blueGrey,
