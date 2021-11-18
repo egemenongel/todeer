@@ -38,30 +38,52 @@ class ReportWidget extends StatelessWidget {
               ),
               const Text(
                 "You have totally spent",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                ),
               ),
               const SizedBox(
                 height: 20,
               ),
               Container(
+                height: displayWidth(context) / 6,
+                width: displayWidth(context) / 2,
                 decoration: BoxDecoration(
                     color: Colors.blueGrey,
                     borderRadius: BorderRadius.circular(
                       20.0,
                     )),
-                child: Text(
-                  Provider.of<TaskListManager>(context).total.toString() +
-                      " minutes",
-                  style: const TextStyle(
-                    color: Colors.lightBlueAccent,
-                    fontSize: 30.0,
+                child: Center(
+                  child: Text(
+                    "${context.read<TaskListManager>().total} minutes",
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 30.0,
+                    ),
                   ),
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              Text("on $title tasks"),
+              RichText(
+                text: TextSpan(
+                  text: "on ",
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 18.0,
+                  ),
+                  children: [
+                    TextSpan(
+                        text: title,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white)),
+                    const TextSpan(text: " tasks"),
+                  ],
+                ),
+              ),
+              // Text("on $title tasks"),
               Container(
                 height: bottomBar(context),
                 decoration: const BoxDecoration(
