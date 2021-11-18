@@ -79,7 +79,10 @@ class ListPage extends StatelessWidget {
                                                 DeleteTaskDialog(task: task),
                                           ));
                                 },
-                                padding: const EdgeInsets.only(left: 10.0),
+                                padding: const EdgeInsets.only(
+                                  left: 10.0,
+                                  right: 5.0,
+                                ),
                                 separatorBuilder:
                                     (BuildContext context, int index) {
                                   return const Divider(
