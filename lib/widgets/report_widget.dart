@@ -47,12 +47,13 @@ class ReportWidget extends StatelessWidget {
                 height: 20,
               ),
               Container(
+                padding: const EdgeInsets.all(10),
                 height: displayWidth(context) / 6,
                 width: displayWidth(context) / 2,
                 decoration: BoxDecoration(
                     color: Colors.blueGrey,
                     borderRadius: BorderRadius.circular(
-                      20.0,
+                      10.0,
                     )),
                 child: Center(
                   child: Text(
