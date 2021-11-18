@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/pages/report_widget.dart';
+import 'package:to_deer/widgets/report_widget.dart';
 import 'package:to_deer/services/database_service.dart';
 import 'package:to_deer/pages/list_title_page.dart';
 import 'package:to_deer/services/size_helper.dart';
