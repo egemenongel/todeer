@@ -41,7 +41,7 @@ class TaskTile extends StatelessWidget {
             borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(10), topLeft: Radius.circular(10))),
         child: ListTile(
-            horizontalTitleGap: 10.0,
+            horizontalTitleGap: 2.0,
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -105,8 +105,7 @@ class TaskTile extends StatelessWidget {
               onChanged: checkboxCallback,
               activeColor: (index % 2) == 1 ? Colors.orange : Colors.deepOrange,
             ),
-            trailing: Container(
-              alignment: Alignment.center,
+            trailing: SizedBox(
               width: displayWidth(context) / 4,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
