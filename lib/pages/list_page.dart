@@ -32,9 +32,9 @@ class ListPage extends StatelessWidget {
             shadowColor: Colors.indigo,
             title: Text(
               "${list!["title"]}",
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
-                fontSize: 32.0,
+                fontSize: appBarHeight(context) / 2,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
@@ -79,9 +79,7 @@ class ListPage extends StatelessWidget {
                                                 DeleteTaskDialog(task: task),
                                           ));
                                 },
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 20,
-                                ),
+                                padding: const EdgeInsets.only(left: 10.0),
                                 separatorBuilder:
                                     (BuildContext context, int index) {
                                   return const Divider(
