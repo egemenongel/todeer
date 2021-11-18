@@ -51,7 +51,7 @@ class _TimeFieldState extends State<TimeField> {
 
     return TextFormField(
       decoration: InputDecoration(
-          contentPadding: const EdgeInsets.fromLTRB(12, 24, 0, 16),
+          contentPadding: const EdgeInsets.fromLTRB(10.0, 24.0, 0.0, 16.0),
           suffixIcon: IconButton(
             onPressed: widget.clearButton,
             alignment: Alignment.center,
@@ -65,6 +65,7 @@ class _TimeFieldState extends State<TimeField> {
           labelText: widget.labelText,
           labelStyle: const TextStyle(
             color: Colors.blueGrey,
+            fontSize: 14.0,
           ),
           enabledBorder:
               widget.controller!.text.isNotEmpty ? widget._border : null,
