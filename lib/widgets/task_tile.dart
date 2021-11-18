@@ -119,7 +119,8 @@ class TaskTile extends StatelessWidget {
                           ),
                           child: Text(
                             "$duration mins",
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(
+                                fontSize: 12.0, color: Colors.white),
                           ),
                         )
                       : const SizedBox(),
@@ -132,7 +133,8 @@ class TaskTile extends StatelessWidget {
                           ),
                           child: Text(
                             startTime,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(
+                                fontSize: 12.0, color: Colors.white),
                           ),
                         )
                       : const SizedBox(),
@@ -150,7 +152,8 @@ class TaskTile extends StatelessWidget {
                           ),
                           child: Text(
                             finishTime,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(
+                                fontSize: 12.0, color: Colors.white),
                           ),
                         )
                       : const SizedBox(),
