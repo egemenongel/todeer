@@ -102,21 +102,33 @@ class TaskListsPage extends StatelessWidget {
                               );
                             }
                             return Expanded(
-                              child: ListView.separated(
-                                itemCount: snapshot.data.docs.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  var list = snapshot.data.docs[index];
-                                  return TaskListTile(
-                                    list: list,
-                                    index: index,
-                                  );
-                                },
-                                separatorBuilder:
-                                    (BuildContext context, int index) {
-                                  return const Divider(
-                                      height: 20, color: Colors.transparent);
-                                },
-                              ),
+                              child: snapshot.data.docs.length == 0
+                                  ? const Center(
+                                      child: Text(
+                                      "You don't have any list. Add a new list to start",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20.0,
+                                      ),
+                                    ))
+                                  : ListView.separated(
+                                      itemCount: snapshot.data.docs.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        var list = snapshot.data.docs[index];
+
+                                        return TaskListTile(
+                                          list: list,
+                                          index: index,
+                                        );
+                                      },
+                                      separatorBuilder:
+                                          (BuildContext context, int index) {
+                                        return const Divider(
+                                            height: 20,
+                                            color: Colors.transparent);
+                                      },
+                                    ),
                             );
                           },
                         ),
