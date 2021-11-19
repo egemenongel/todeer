@@ -22,7 +22,9 @@ class ReportWidget extends StatelessWidget {
       body: Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-          height: displayHeight(context) / 2,
+          height: displayHeight(context) < displayWidth(context)
+              ? displayHeight(context)
+              : displayHeight(context) / 2,
           width: displayWidth(context),
           decoration: const BoxDecoration(
             color: Colors.indigoAccent,
@@ -48,8 +50,8 @@ class ReportWidget extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.all(10),
-                height: displayWidth(context) / 6,
-                width: displayWidth(context) / 2,
+                height: 60.0,
+                width: 200.0,
                 decoration: BoxDecoration(
                     color: Colors.blueGrey,
                     borderRadius: BorderRadius.circular(
@@ -60,7 +62,7 @@ class ReportWidget extends StatelessWidget {
                     "${context.read<TaskListManager>().total} minutes",
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 25.0,
+                      fontSize: 20.0,
                     ),
                   ),
                 ),
@@ -86,7 +88,9 @@ class ReportWidget extends StatelessWidget {
               ),
               // Text("on $title tasks"),
               Container(
-                height: bottomBar(context),
+                height: displayHeight(context) < displayWidth(context)
+                    ? displayWidth(context) / 16
+                    : bottomBar(context),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
