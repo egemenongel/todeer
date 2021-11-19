@@ -109,7 +109,6 @@ class _TaskFormState extends State<TaskForm> {
                     height: 15,
                   ),
                   Container(
-                    height: 250,
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -230,68 +229,74 @@ class _TaskFormState extends State<TaskForm> {
                           height: 20,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SizedBox(
-                                width: 100,
-                                child: Column(
-                                  children: [
-                                    TextFormField(
-                                      inputFormatters: [
-                                        LengthLimitingTextInputFormatter(4),
-                                      ],
-                                      onChanged: (value) {
-                                        if (value.isNotEmpty) {
-                                          setState(() {
-                                            isEnabled = false;
-                                          });
-                                        } else {
-                                          setState(() {
-                                            isEnabled = true;
-                                          });
-                                        }
-                                      },
-                                      textAlign: TextAlign.center,
-                                      controller: widget.duration,
-                                      enabled: Provider.of<TaskListManager>(
-                                              context,
-                                              listen: true)
-                                          .duration,
-                                      decoration: InputDecoration(
-                                          border: widget._border,
-                                          labelText: "Duration",
-                                          labelStyle: const TextStyle(
-                                              color: Colors.blueGrey),
-                                          errorStyle: const TextStyle(
-                                            fontSize: 9.0,
-                                          ),
-                                          errorMaxLines: 2),
-                                      keyboardType: TextInputType.number,
-                                      focusNode: duration,
-                                      textInputAction: TextInputAction.next,
-                                      onFieldSubmitted: (value) {
-                                        duration.unfocus();
-                                        FocusScope.of(context)
-                                            .requestFocus(dueDate);
-                                      },
-                                      validator: (val) => val!.isNotEmpty
-                                          ? ((int.tryParse(val)) is! int)
-                                              ? "Type an integer"
-                                              : (int.parse(val) < 0)
-                                                  ? "Cannot be negative"
-                                                  : null
-                                          : null,
+                              width: displayWidth(context) / 6,
+                            ),
+                            Expanded(
+                              child: TextFormField(
+                                inputFormatters: [
+                                  LengthLimitingTextInputFormatter(4),
+                                ],
+                                onChanged: (value) {
+                                  if (value.isNotEmpty) {
+                                    setState(() {
+                                      isEnabled = false;
+                                    });
+                                  } else {
+                                    setState(() {
+                                      isEnabled = true;
+                                    });
+                                  }
+                                },
+                                textAlign: TextAlign.center,
+                                controller: widget.duration,
+                                enabled: Provider.of<TaskListManager>(context,
+                                        listen: true)
+                                    .duration,
+                                decoration: InputDecoration(
+                                    border: widget._border,
+                                    labelText: "Duration",
+                                    labelStyle: const TextStyle(
+                                        fontSize: 14.0, color: Colors.blueGrey),
+                                    errorStyle: const TextStyle(
+                                      fontSize: 9.0,
                                     ),
-                                  ],
-                                )),
+                                    errorMaxLines: 2),
+                                keyboardType: TextInputType.number,
+                                focusNode: duration,
+                                textInputAction: TextInputAction.next,
+                                onFieldSubmitted: (value) {
+                                  duration.unfocus();
+                                  FocusScope.of(context).requestFocus(dueDate);
+                                },
+                                validator: (val) => val!.isNotEmpty
+                                    ? ((int.tryParse(val)) is! int)
+                                        ? "Type an integer"
+                                        : (int.parse(val) < 0)
+                                            ? "Cannot be negative"
+                                            : null
+                                    : null,
+                              ),
+                            ),
                             const SizedBox(
                               width: 10,
                             ),
                             const Text(
                               "mins",
-                              style: TextStyle(color: Colors.blueGrey),
-                            )
+                              style: TextStyle(
+                                color: Colors.blueGrey,
+                                fontSize: 14.0,
+                              ),
+                            ),
+                            SizedBox(
+                              width: displayWidth(context) / 6,
+                            ),
                           ],
+                        ),
+                        const SizedBox(
+                          height: 20,
                         ),
                       ],
                     ),
@@ -317,7 +322,10 @@ class _TaskFormState extends State<TaskForm> {
                     decoration: InputDecoration(
                       border: widget._border,
                       labelText: "Add Notes",
-                      labelStyle: const TextStyle(color: Colors.blueGrey),
+                      labelStyle: const TextStyle(
+                        color: Colors.blueGrey,
+                        fontSize: 14.0,
+                      ),
                     ),
                     controller: widget.notes,
                     focusNode: notes,
