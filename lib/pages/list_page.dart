@@ -34,7 +34,7 @@ class ListPage extends StatelessWidget {
               "${list!["title"]}",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: appBarHeight(context) / 2,
+                fontSize: appBarHeight(context) / 3,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
@@ -94,7 +94,10 @@ class ListPage extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              height: bottomBar(context),
+                              height:
+                                  displayHeight(context) < displayWidth(context)
+                                      ? displayWidth(context) / 16
+                                      : bottomBar(context),
                               decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(10),
