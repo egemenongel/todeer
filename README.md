@@ -2,12 +2,24 @@
 
 <p align="center"> <img src="https://user-images.githubusercontent.com/73590188/142592337-5181efb1-361d-4df2-a48b-343004d587cb.png" alt="Logo" width="50%"/> </p>
 
+## **Table of Contents**
+
+- [todeer](todeer)
+  * [Table of Contents](#table-of-contents)
+  * [Description](#description)
+  * [Roadmap](#roadmap)
+  * [Screenshots](#screenshots)
+    + [Lists Overview](#lists-overview)
+    + [Shopping List](#shopping-list)
+    + [Projects with Deadlines](#projects-with-deadlines)
+    + [List Report](#list-report)
+
 ## Description
 
 
 ToDeer is a simple task management app built with Flutter. Users can add lists to remember tasks should be done and to plan their schedule.
 
-## TO DO
+## Roadmap
 
 * [X] After adding a task, automatically focus to TextFormField.
 * [X] Fix AM PM for duration calculation and checking start and finish dates.
@@ -53,7 +65,7 @@ ToDeer is a simple task management app built with Flutter. Users can add lists t
 * [X] Task tile details sizing should be fixed.
 * [X] On landscape mode app bar does not fit.
 * [X] App bar safe area.
-* [ ] Clear form when adding tasks.
+* [X] Clear form when adding tasks.
 
 ## Screenshots
 
