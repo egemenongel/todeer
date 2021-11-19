@@ -56,6 +56,7 @@ class _TimeFieldState extends State<DateField> {
           labelText: widget.labelText,
           labelStyle: const TextStyle(
             color: Colors.blueGrey,
+            fontSize: 14.0,
           ),
           enabledBorder:
               widget.controller!.text.isNotEmpty ? widget._border : null,
