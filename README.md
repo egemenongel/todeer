@@ -13,6 +13,7 @@
     + [Shopping List](#shopping-list)
     + [Projects with Deadlines](#projects-with-deadlines)
     + [List Report](#list-report)
+  * [License](#license)
 
 ## Description
 
