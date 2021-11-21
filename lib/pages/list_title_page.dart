@@ -34,8 +34,10 @@ class ListTitlePage extends StatelessWidget {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   context.read<TaskListManager>().setTitle(listTitle.text);
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => AddListPage()));
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddListPage()));
                 }
               },
               child: const Text("Next"),
