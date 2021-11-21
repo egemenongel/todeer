@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/models/task.dart';
+import 'package:to_deer/pages/add_list/current_list.dart';
 import 'package:to_deer/utils/form_manager.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 import 'package:to_deer/shared/task_form/task_form.dart';
@@ -51,7 +52,7 @@ class _AddListPageState extends State<AddListPage> {
         child: Column(
           children: [
             const SizedBox(
-              height: 100,
+              height: 70,
             ),
             Text(
               "${_taskListManager.listTitle}",
@@ -71,6 +72,9 @@ class _AddListPageState extends State<AddListPage> {
               duration: duration,
               dueDate: dueDate,
               notes: notes,
+            ),
+            const SizedBox(
+              height: 30,
             ),
             ElevatedButton(
               onPressed: () {
@@ -95,54 +99,7 @@ class _AddListPageState extends State<AddListPage> {
               },
               child: const Text("Add"),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10.0,
-              ),
-              height: 300,
-              child: Consumer<TaskListManager>(
-                  builder: (context, taskListManager, child) {
-                if (taskListManager.taskList.isNotEmpty) {
-                  return ListView.separated(
-                    itemCount: taskListManager.listLength,
-                    itemBuilder: (BuildContext context, int index) {
-                      var task = taskListManager.taskList[index];
-                      return ListTile(
-                        tileColor: Colors.blueGrey[100],
-                        trailing: IconButton(
-                            icon: const Icon(
-                              Icons.remove_circle,
-                            ),
-                            onPressed: () => taskListManager.removeTask(task)),
-                        title: Row(
-                          children: [
-                            Text(
-                              "${index + 1}. ",
-                              style: const TextStyle(color: Colors.blueAccent),
-                            ),
-                            Text(
-                              task.title,
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return const Divider(
-                        height: 0,
-                        thickness: 2.0,
-                      );
-                    },
-                  );
-                } else {
-                  return Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0,
-                    ),
-                  );
-                }
-              }),
-            ),
+            const CurrentList(),
           ],
         ),
       ),
