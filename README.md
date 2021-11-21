@@ -1,10 +1,26 @@
 # todeer
 
+<p align="center"> <img src="https://user-images.githubusercontent.com/73590188/142592337-5181efb1-361d-4df2-a48b-343004d587cb.png" alt="Logo" width="50%"/> </p>
+
+## **Table of Contents**
+
+- [todeer](todeer)
+  * [Table of Contents](#table-of-contents)
+  * [Description](#description)
+  * [Roadmap](#roadmap)
+  * [Screenshots](#screenshots)
+    + [Lists Overview](#lists-overview)
+    + [Shopping List](#shopping-list)
+    + [Projects with Deadlines](#projects-with-deadlines)
+    + [List Report](#list-report)
+  * [License](#license)
+
 ## Description
 
-A simple To Do List built with Flutter. Used Provider Package for State Management.
 
-## TO DO
+ToDeer is a simple task management app built with Flutter. Users can add lists to remember tasks should be done and to plan their schedule.
+
+## Roadmap
 
 * [X] After adding a task, automatically focus to TextFormField.
 * [X] Fix AM PM for duration calculation and checking start and finish dates.
@@ -50,25 +66,22 @@ A simple To Do List built with Flutter. Used Provider Package for State Manageme
 * [X] Task tile details sizing should be fixed.
 * [X] On landscape mode app bar does not fit.
 * [X] App bar safe area.
-* [ ] Clear form when adding tasks.
+* [X] Clear form when adding tasks.
 
 ## Screenshots
 
-### Add a New List
-<img src="https://user-images.githubusercontent.com/73590188/131883594-60bd5408-ab5d-4add-9a1c-5e42c34a63a7.png" alt="Add New List" width="400"/>
+### Lists Overview
 
-### Add Tasks
+<img src="https://user-images.githubusercontent.com/73590188/142590339-ea8db2cc-95c9-4212-b423-5318f90029e1.png" alt="Lists Overview" width="400"/>
 
-<img src="https://user-images.githubusercontent.com/73590188/131883750-eb7af8f7-6cbc-4289-afe4-0044bf692e2e.png" alt="Add Tasks" width="400"/>
+### Shopping List
 
-### Edit Tasks
+<img src="https://user-images.githubusercontent.com/73590188/142590444-44c8ccf5-c4b2-40ee-bebe-a94f696eca98.png" alt="Shopping List" width="400"/>
 
-<img src="https://user-images.githubusercontent.com/73590188/131883853-8c30df57-afb5-47a8-896f-2e53c0c0ee72.png" alt="Edit Tasks" width="400"/>
+### Projects with Deadlines
 
-### Task List
+<img src="https://user-images.githubusercontent.com/73590188/142590549-e21cae8b-945f-4e89-bde6-8ee264e0b181.png" alt="Projects with Deadlines" width="400"/>
 
-<img src="https://user-images.githubusercontent.com/73590188/131883915-ce7802c9-0fbc-4c57-ae76-8ef14ba97ea6.png" alt="Task List" width="400"/>
+### List Report
 
-### Checkboxes
-
-<img src="https://user-images.githubusercontent.com/73590188/131884030-bb993724-0ae8-4d46-9a66-d0b674074fc7.png" alt="Task List" width="400"/>
+<img src="https://user-images.githubusercontent.com/73590188/142590617-0abc93af-423b-47ed-9e8e-3bfcb8898ffb.png" alt="List Report" width="400"/>
