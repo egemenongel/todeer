@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/models/task.dart';
+import 'package:to_deer/utils/form_manager.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 import 'package:to_deer/widgets/task_form.dart';
 import 'package:to_deer/widgets/bottom_app_bar.dart';
 
-class AddListPage extends StatelessWidget {
-  AddListPage({Key? key}) : super(key: key);
+class AddListPage extends StatefulWidget {
+  const AddListPage({Key? key}) : super(key: key);
+
+  @override
+  State<AddListPage> createState() => _AddListPageState();
+}
+
+class _AddListPageState extends State<AddListPage> {
   final taskTitle = TextEditingController();
   final startTime = TextEditingController();
   final finishTime = TextEditingController();
@@ -14,6 +21,7 @@ class AddListPage extends StatelessWidget {
   final duration = TextEditingController();
   final dueDate = TextEditingController();
   final notes = TextEditingController();
+
   void _clearForm() {
     _formKey.currentState!.reset();
     taskTitle.clear();
@@ -22,6 +30,17 @@ class AddListPage extends StatelessWidget {
     duration.clear();
     dueDate.clear();
     notes.clear();
+  }
+
+  @override
+  void dispose() {
+    taskTitle.dispose();
+    startTime.dispose();
+    finishTime.dispose();
+    duration.dispose();
+    dueDate.dispose();
+    notes.dispose();
+    super.dispose();
   }
 
   @override
@@ -67,6 +86,11 @@ class AddListPage extends StatelessWidget {
                   );
                   _taskListManager.addTask(task);
                   _clearForm();
+                  FocusScope.of(context).unfocus();
+                  Provider.of<FormManager>(context, listen: false)
+                      .changeDurationBool(true);
+                  Provider.of<FormManager>(context, listen: false)
+                      .changeTimeBool(true);
                 }
               },
               child: const Text("Add"),
