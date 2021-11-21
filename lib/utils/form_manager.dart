@@ -3,6 +3,17 @@ import 'package:flutter/cupertino.dart';
 class FormManager extends ChangeNotifier {
   String loginErrorText = "";
   String singUpErrorText = "";
+  bool duration = true;
+  bool time = true;
+  void changeDurationBool(bool value) {
+    duration = value;
+    notifyListeners();
+  }
+
+  void changeTimeBool(bool value) {
+    time = value;
+    notifyListeners();
+  }
 
   void setLoginError(dynamic result) {
     if (result is String) {
