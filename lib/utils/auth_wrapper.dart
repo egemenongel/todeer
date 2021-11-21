@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/pages/authenticate/login_page.dart';
 import 'package:to_deer/pages/authenticate/sign_up_page.dart';
-import 'package:to_deer/pages/home/task_lists_page.dart';
+import 'package:to_deer/pages/home/home_page.dart';
 
 class AuthWrapper extends StatefulWidget {
   const AuthWrapper({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
   Widget build(BuildContext context) {
     final user = context.watch<User?>();
     if (user != null) {
-      return TaskListsPage();
+      return HomePage();
     }
     if (showLogin) {
       return LoginPage(toggleCallback: toggle);
