@@ -67,10 +67,6 @@ class _TimeFieldState extends State<TimeField> {
             iconSize: 15,
           ),
           labelText: widget.labelText,
-          labelStyle: const TextStyle(
-            color: Colors.blueGrey,
-            fontSize: 14.0,
-          ),
           enabledBorder:
               widget.controller!.text.isNotEmpty ? widget._border : null,
           border: widget._border),

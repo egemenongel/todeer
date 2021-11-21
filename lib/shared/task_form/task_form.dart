@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/services/size_helper.dart';
+import 'package:to_deer/shared/form_constants.dart';
 import 'package:to_deer/utils/form_manager.dart';
 import 'package:to_deer/shared/task_form/date_field.dart';
 import 'package:to_deer/shared/task_form/time_field.dart';
@@ -25,9 +26,6 @@ class TaskForm extends StatefulWidget {
   final TextEditingController duration;
   final TextEditingController dueDate;
   final TextEditingController notes;
-  final OutlineInputBorder _border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
-      borderSide: const BorderSide(color: Colors.deepOrange));
   @override
   State<TaskForm> createState() => _TaskFormState();
 }
@@ -93,7 +91,6 @@ class _TaskFormState extends State<TaskForm> {
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
                     labelText: "New Task",
-                    labelStyle: TextStyle(color: Colors.blueGrey),
                   ),
                   autofocus: true,
                   focusNode: title,
@@ -262,10 +259,12 @@ class _TaskFormState extends State<TaskForm> {
                                         listen: true)
                                     .duration,
                                 decoration: InputDecoration(
-                                    border: widget._border,
+                                    border: taskFormBorder(),
+                                    enabledBorder:
+                                        widget.duration.text.isNotEmpty
+                                            ? taskFormBorder()
+                                            : null,
                                     labelText: "Duration",
-                                    labelStyle: const TextStyle(
-                                        fontSize: 14.0, color: Colors.blueGrey),
                                     errorStyle: const TextStyle(
                                       fontSize: 9.0,
                                     ),
@@ -326,12 +325,11 @@ class _TaskFormState extends State<TaskForm> {
                     minLines: 1, //Normal textInputField will be displayed
                     maxLines: 5, // when user presses enter it will adapt to it
                     decoration: InputDecoration(
-                      border: widget._border,
+                      border: taskFormBorder(),
+                      enabledBorder: widget.notes.text.isNotEmpty
+                          ? taskFormBorder()
+                          : null,
                       labelText: "Add Notes",
-                      labelStyle: const TextStyle(
-                        color: Colors.blueGrey,
-                        fontSize: 14.0,
-                      ),
                     ),
                     controller: widget.notes,
                     focusNode: notes,

@@ -32,7 +32,7 @@ class SignUpPage extends StatelessWidget {
                     decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.account_circle_rounded),
                         labelText: "E-mail",
-                        border: formFieldBorder()),
+                        border: authFormBorder()),
                   ),
                   const SizedBox(height: 15.0),
                   TextFormField(
@@ -42,7 +42,7 @@ class SignUpPage extends StatelessWidget {
                     decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.vpn_key_rounded),
                         labelText: "Password",
-                        border: formFieldBorder()),
+                        border: authFormBorder()),
                   ),
                 ],
               ),
