@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/pages/add_list_page.dart';
+import 'package:to_deer/pages/add_list/add_list_page.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 
 class ListTitlePage extends StatelessWidget {

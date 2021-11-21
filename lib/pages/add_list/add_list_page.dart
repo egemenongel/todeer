@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:to_deer/models/task.dart';
 import 'package:to_deer/utils/form_manager.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
-import 'package:to_deer/widgets/task_form.dart';
-import 'package:to_deer/widgets/bottom_app_bar.dart';
+import 'package:to_deer/shared/task_form/task_form.dart';
+import 'package:to_deer/pages/add_list/bottom_app_bar.dart';
 
 class AddListPage extends StatefulWidget {
   const AddListPage({Key? key}) : super(key: key);

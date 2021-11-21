@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:to_deer/models/task.dart';
 import 'package:to_deer/services/database_service.dart';
-import 'package:to_deer/widgets/task_form.dart';
+import 'package:to_deer/shared/task_form/task_form.dart';
 
 class AddTaskDialog extends StatelessWidget {
   AddTaskDialog({Key? key, required this.list}) : super(key: key);

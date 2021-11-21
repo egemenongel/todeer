@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:to_deer/services/size_helper.dart';
-import 'package:to_deer/widgets/dialogs/edit_task_dialog.dart';
+import 'package:to_deer/pages/list/dialogs/edit_task_dialog.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class TaskTile extends StatelessWidget {

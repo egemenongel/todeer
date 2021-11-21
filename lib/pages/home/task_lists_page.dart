@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:to_deer/pages/list_title_page.dart';
+import 'package:to_deer/pages/add_list/list_title_page.dart';
 import 'package:to_deer/services/auth_service.dart';
 import 'package:to_deer/services/database_service.dart';
 import 'package:to_deer/services/size_helper.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/widgets/task_list_tile.dart';
+import 'package:to_deer/pages/home/task_list_tile.dart';
 
 class TaskListsPage extends StatelessWidget {
   TaskListsPage({Key? key}) : super(key: key);

@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/pages/list_title_page.dart';
+import 'package:to_deer/pages/add_list/list_title_page.dart';
 import 'package:to_deer/services/size_helper.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
-import 'package:to_deer/widgets/dialogs/add_task_dialog.dart';
+import 'package:to_deer/pages/list/dialogs/add_task_dialog.dart';
 
 class ReportWidget extends StatelessWidget {
   const ReportWidget({

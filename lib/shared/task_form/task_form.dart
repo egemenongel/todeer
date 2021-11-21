@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/services/size_helper.dart';
 import 'package:to_deer/utils/form_manager.dart';
-import 'package:to_deer/widgets/form_fields/date_field.dart';
-import 'package:to_deer/widgets/form_fields/time_field.dart';
+import 'package:to_deer/shared/task_form/date_field.dart';
+import 'package:to_deer/shared/task_form/time_field.dart';
 
 class TaskForm extends StatefulWidget {
   TaskForm({

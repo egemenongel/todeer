@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/pages/list_page.dart';
+import 'package:to_deer/pages/list/list_page.dart';
 import 'package:to_deer/services/database_service.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
-import 'package:to_deer/widgets/dialogs/delete_list_dialog.dart';
-import 'package:to_deer/widgets/dialogs/edit_list_dialog.dart';
+import 'package:to_deer/pages/home/delete_list_dialog.dart';
+import 'package:to_deer/pages/home/edit_list_dialog.dart';
 
 class TaskListTile extends StatelessWidget {
   const TaskListTile({
