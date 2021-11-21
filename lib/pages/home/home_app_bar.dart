@@ -5,12 +5,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({
     Key? key,
     this.scaffoldKey,
-  })  : preferredSize = const Size.fromHeight(kToolbarHeight),
-        super(key: key);
-  @override
-  final Size preferredSize;
+    required this.preferredSize,
+  });
   final GlobalKey<ScaffoldState>? scaffoldKey;
-
+  @override
+  final Size preferredSize; // default is 56.0
   @override
   Widget build(BuildContext context) {
     return AppBar(

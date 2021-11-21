@@ -12,6 +12,10 @@ double displayWidth(BuildContext context) {
   return MediaQuery.of(context).size.width;
 }
 
+Size appBarSize(BuildContext context) {
+  return displaySize(context) / 10;
+}
+
 double appBarHeight(BuildContext context) {
   return displayHeight(context) / 10;
 }

@@ -3,6 +3,7 @@ import 'package:to_deer/pages/add_list/list_title_page.dart';
 import 'package:to_deer/pages/home/home_app_bar.dart';
 import 'package:to_deer/pages/home/home_drawer.dart';
 import 'package:to_deer/pages/home/lists.dart';
+import 'package:to_deer/services/size_helper.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class HomePage extends StatelessWidget {
       endDrawer: const HomeDrawer(),
       appBar: HomeAppBar(
         scaffoldKey: _key,
+        preferredSize: appBarSize(context),
       ),
       body: const Lists(),
       floatingActionButton: FloatingActionButton(
