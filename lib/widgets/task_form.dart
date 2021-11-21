@@ -3,7 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/services/size_helper.dart';
-import 'package:to_deer/utils/task_list_manager.dart';
+import 'package:to_deer/utils/form_manager.dart';
 import 'package:to_deer/widgets/form_fields/date_field.dart';
 import 'package:to_deer/widgets/form_fields/time_field.dart';
 
@@ -52,9 +52,11 @@ class _TaskFormState extends State<TaskForm> {
     SchedulerBinding.instance!.addPostFrameCallback((_) {
       if (widget.startTime.text.isNotEmpty ||
           widget.finishTime.text.isNotEmpty) {
-        Provider.of<TaskListManager>(context, listen: false).changeBool(false);
+        Provider.of<FormManager>(context, listen: false)
+            .changeDurationBool(false);
       } else {
-        Provider.of<TaskListManager>(context, listen: false).changeBool(true);
+        Provider.of<FormManager>(context, listen: false)
+            .changeDurationBool(true);
       }
       _disableTimeField();
     });
@@ -71,7 +73,7 @@ class _TaskFormState extends State<TaskForm> {
     super.dispose();
   }
 
-  bool isEnabled = true;
+  // bool isEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -146,14 +148,16 @@ class _TaskFormState extends State<TaskForm> {
                                   widget.startTime.clear();
                                   if (widget.startTime.text.isEmpty &&
                                       widget.finishTime.text.isEmpty) {
-                                    Provider.of<TaskListManager>(context,
+                                    Provider.of<FormManager>(context,
                                             listen: false)
-                                        .changeBool(true);
+                                        .changeDurationBool(true);
                                   }
                                 },
                                 controller: widget.startTime,
                                 labelText: "Start Time",
-                                enabled: isEnabled,
+                                enabled: Provider.of<FormManager>(context,
+                                        listen: true)
+                                    .time,
                                 focusNode: startTime,
                                 requestNode: () => FocusScope.of(context)
                                     .requestFocus(finishTime),
@@ -173,14 +177,16 @@ class _TaskFormState extends State<TaskForm> {
                                   widget.finishTime.clear();
                                   if (widget.startTime.text.isEmpty &&
                                       widget.finishTime.text.isEmpty) {
-                                    Provider.of<TaskListManager>(context,
+                                    Provider.of<FormManager>(context,
                                             listen: false)
-                                        .changeBool(true);
+                                        .changeDurationBool(true);
                                   }
                                 },
                                 controller: widget.finishTime,
                                 labelText: "Finish Time",
-                                enabled: isEnabled,
+                                enabled: Provider.of<FormManager>(context,
+                                        listen: true)
+                                    .time,
                                 focusNode: finishTime,
                                 requestNode: () => FocusScope.of(context)
                                     .requestFocus(dueDate),
@@ -241,18 +247,18 @@ class _TaskFormState extends State<TaskForm> {
                                 ],
                                 onChanged: (value) {
                                   if (value.isNotEmpty) {
-                                    setState(() {
-                                      isEnabled = false;
-                                    });
+                                    Provider.of<FormManager>(context,
+                                            listen: false)
+                                        .changeTimeBool(false);
                                   } else {
-                                    setState(() {
-                                      isEnabled = true;
-                                    });
+                                    Provider.of<FormManager>(context,
+                                            listen: false)
+                                        .changeTimeBool(true);
                                   }
                                 },
                                 textAlign: TextAlign.center,
                                 controller: widget.duration,
-                                enabled: Provider.of<TaskListManager>(context,
+                                enabled: Provider.of<FormManager>(context,
                                         listen: true)
                                     .duration,
                                 decoration: InputDecoration(
@@ -342,9 +348,10 @@ class _TaskFormState extends State<TaskForm> {
 
   void _disableTimeField() {
     if (widget.duration.text.isNotEmpty) {
-      setState(() {
-        isEnabled = false;
-      });
+      Provider.of<FormManager>(context, listen: false).changeTimeBool(false);
+      // setState(() {
+      //   isEnabled = false;
+      // });
     }
   }
 }
