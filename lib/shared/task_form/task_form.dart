@@ -9,7 +9,7 @@ import 'package:to_deer/shared/task_form/date_field.dart';
 import 'package:to_deer/shared/task_form/time_field.dart';
 
 class TaskForm extends StatefulWidget {
-  TaskForm({
+  const TaskForm({
     Key? key,
     required this.formKey,
     required this.taskTitle,
@@ -48,15 +48,8 @@ class _TaskFormState extends State<TaskForm> {
     dueDate = FocusNode();
     notes = FocusNode();
     SchedulerBinding.instance!.addPostFrameCallback((_) {
-      if (widget.startTime.text.isNotEmpty ||
-          widget.finishTime.text.isNotEmpty) {
-        Provider.of<FormManager>(context, listen: false)
-            .changeDurationBool(false);
-      } else {
-        Provider.of<FormManager>(context, listen: false)
-            .changeDurationBool(true);
-      }
-      _disableTimeField();
+      _setTimeField();
+      _setDurationField();
     });
   }
 
@@ -70,8 +63,6 @@ class _TaskFormState extends State<TaskForm> {
     notes.dispose();
     super.dispose();
   }
-
-  // bool isEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +107,6 @@ class _TaskFormState extends State<TaskForm> {
                       ),
                       color: Colors.deepOrange[100],
                     ),
-                    //Target Time Section
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -344,12 +334,20 @@ class _TaskFormState extends State<TaskForm> {
         ));
   }
 
-  void _disableTimeField() {
+  void _setTimeField() {
     if (widget.duration.text.isNotEmpty) {
       Provider.of<FormManager>(context, listen: false).changeTimeBool(false);
-      // setState(() {
-      //   isEnabled = false;
-      // });
+    } else {
+      Provider.of<FormManager>(context, listen: false).changeTimeBool(true);
+    }
+  }
+
+  void _setDurationField() {
+    if (widget.startTime.text.isNotEmpty || widget.finishTime.text.isNotEmpty) {
+      Provider.of<FormManager>(context, listen: false)
+          .changeDurationBool(false);
+    } else {
+      Provider.of<FormManager>(context, listen: false).changeDurationBool(true);
     }
   }
 }
