@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/utils/task_list_manager.dart';
+import 'package:to_deer/utils/form_manager.dart';
 
 class TimeField extends StatefulWidget {
   TimeField({
@@ -45,7 +45,11 @@ class _TimeFieldState extends State<TimeField> {
         widget.requestNode!.call();
       }
       if (date.value.text.isNotEmpty) {
-        Provider.of<TaskListManager>(context, listen: false).changeBool(false);
+        Provider.of<FormManager>(context, listen: false)
+            .changeDurationBool(false);
+      } else {
+        Provider.of<FormManager>(context, listen: false)
+            .changeDurationBool(true);
       }
     }
 
