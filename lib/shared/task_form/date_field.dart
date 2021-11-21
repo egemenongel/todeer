@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:to_deer/shared/form_constants.dart';
 
 class DateField extends StatefulWidget {
-  DateField({
+  const DateField({
     Key? key,
     this.labelText,
     this.controller,
