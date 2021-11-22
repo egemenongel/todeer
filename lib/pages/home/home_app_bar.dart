@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:to_deer/services/size_helper.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+  // ignore: use_key_in_widget_constructors
   const HomeAppBar({
     Key? key,
     this.scaffoldKey,
