@@ -18,10 +18,10 @@ class _AddListPageState extends State<AddListPage> {
   final taskTitle = TextEditingController();
   final startTime = TextEditingController();
   final finishTime = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
   final duration = TextEditingController();
   final dueDate = TextEditingController();
   final notes = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   void _clearForm() {
     _formKey.currentState!.reset();
