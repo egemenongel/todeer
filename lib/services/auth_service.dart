@@ -28,6 +28,7 @@ class AuthService {
       UserCredential credential = await _firebaseAuth
           .signInWithEmailAndPassword(email: email!, password: password!);
       User? user = credential.user;
+
       return _userFromFirebase(user);
     } on FirebaseAuthException catch (e) {
       return e.code.toString();
