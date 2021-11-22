@@ -74,7 +74,7 @@ class LoginPage extends StatelessWidget {
             const SizedBox(
               height: 5.0,
             ),
-            Consumer<FormManager>(builder: (_, formManager, ___) {
+            Consumer<FormManager>(builder: (_, formManager, __) {
               return Text(
                 formManager.loginErrorText,
                 style: const TextStyle(

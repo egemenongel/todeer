@@ -12,8 +12,7 @@ class CurrentList extends StatelessWidget {
         horizontal: 10.0,
       ),
       height: 300,
-      child:
-          Consumer<TaskListManager>(builder: (context, taskListManager, child) {
+      child: Consumer<TaskListManager>(builder: (_, taskListManager, __) {
         if (taskListManager.taskList.isNotEmpty) {
           return ListView.separated(
             itemCount: taskListManager.listLength,
