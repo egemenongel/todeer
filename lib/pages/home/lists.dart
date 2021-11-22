@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_deer/models/list.dart';
 import 'package:to_deer/pages/home/task_list_tile.dart';
 import 'package:to_deer/services/database_service.dart';
 
@@ -46,8 +47,11 @@ class Lists extends StatelessWidget {
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       var list = snapshot.data.docs[index];
-
+                                      ListModel listModel = ListModel(
+                                          title: list["title"],
+                                          dueDate: list["dueDate"]);
                                       return TaskListTile(
+                                        listModel: listModel,
                                         list: list,
                                         index: index,
                                       );
