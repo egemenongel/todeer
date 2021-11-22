@@ -22,14 +22,6 @@ class TaskListManager extends ChangeNotifier {
     return completedCount;
   }
 
-  Future doc(DocumentReference list) async {
-    QuerySnapshot myList = await list.collection("tasks").get();
-    int length = myList.docs.length;
-    debugPrint(length.toString());
-    l = length;
-    notifyListeners();
-  }
-
   int get listLength {
     return _taskList.length;
   }
@@ -44,7 +36,7 @@ class TaskListManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  clearList() {
+  clearCurrentList() {
     _taskList.clear();
     notifyListeners();
   }
@@ -92,17 +84,6 @@ class TaskListManager extends ChangeNotifier {
     total = sum;
     notifyListeners();
   }
-
-  // void durationCalculator(TimeOfDay start, TimeOfDay finish) {
-  //   int startMinutes = start.hour * 60 + start.minute;
-  //   int finishMinutes = finish.hour * 60 + finish.minute;
-  //   int duration = finishMinutes - startMinutes;
-  //   print(duration.toString());
-  //   // If one of the date is given other should also given!
-  //   // If duration is negative => ERROR
-  //   // "${task.startTime!.format(context).split(" ")[0]} - ${task.finishTime!.format(context).split(" ")[0]}"
-  //   // ERROR VALIDATION SHOULD BE ADDED to check if start date is smaller than finish date.//
-  // }
 
   int durationCalculator(String startTime, String finishTime) {
     String startHours = startTime.split(":"[0])[0];

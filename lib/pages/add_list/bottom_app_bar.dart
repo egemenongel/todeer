@@ -14,9 +14,8 @@ class ListBottomBar extends StatelessWidget {
         children: [
           Expanded(
             child: TextButton(
-                onPressed: () {
-                  context.read<TaskListManager>().clearList();
-                },
+                onPressed: () =>
+                    context.read<TaskListManager>().clearCurrentList(),
                 child: const Text("Clear List")),
           ),
           const SizedBox(
@@ -34,7 +33,7 @@ class ListBottomBar extends StatelessWidget {
                       _taskListManager,
                     );
                     Navigator.popUntil(context, (route) => route.isFirst);
-                    _taskListManager.clearList();
+                    _taskListManager.clearCurrentList();
                   },
                   child: const Text("Submit")))
         ],
