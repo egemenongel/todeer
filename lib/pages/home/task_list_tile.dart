@@ -50,28 +50,34 @@ class TaskListTile extends StatelessWidget {
                 style: TextStyle(
                     color: index % 2 == 1 ? Colors.indigo[800] : Colors.white),
               ),
-              // subtitle: Row(
-              //   children: [
-              //     Icon(
-              //       Icons.date_range,
-              //       size: 12.0,
-              //       color: index % 2 == 1 ? Colors.indigo[800] : Colors.white,
-              //     ),
-              //     const SizedBox(
-              //       width: 5.0,
-              //     ),
-              //     Text(
-              //       list["dueDate"],
-              //       style: TextStyle(
-              //         color: index % 2 == 1 ? Colors.indigo[800] : Colors.white,
-              //         fontSize: 10.0,
-              //       ),
-              //     ),
-              //     const SizedBox(
-              //       width: 5.0,
-              //     ),
-              //   ],
-              // ),
+              subtitle: listModel.dueDate != ""
+                  ? Row(
+                      children: [
+                        Icon(
+                          Icons.date_range,
+                          size: 12.0,
+                          color: index % 2 == 1
+                              ? Colors.indigo[800]
+                              : Colors.white,
+                        ),
+                        const SizedBox(
+                          width: 5.0,
+                        ),
+                        Text(
+                          listModel.dueDate!,
+                          style: TextStyle(
+                            color: index % 2 == 1
+                                ? Colors.indigo[800]
+                                : Colors.white,
+                            fontSize: 10.0,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 5.0,
+                        ),
+                      ],
+                    )
+                  : null,
               trailing: FutureBuilder(
                 future: DatabaseService().getTaskList(list.reference),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
