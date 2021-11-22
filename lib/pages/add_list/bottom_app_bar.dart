@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_deer/models/list.dart';
 import 'package:to_deer/services/database_service.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 
@@ -27,9 +28,12 @@ class ListBottomBar extends StatelessWidget {
               child: TextButton(
                   style: const ButtonStyle(),
                   onPressed: () {
+                    ListModel newList = ListModel(
+                        title: _taskListManager.listTitle!,
+                        dueDate: _taskListManager.listDueDate);
                     var firestore = DatabaseService();
                     firestore.addList(
-                      _taskListManager.listTitle!,
+                      newList,
                       _taskListManager,
                     );
                     Navigator.popUntil(context, (route) => route.isFirst);
