@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:to_deer/models/list.dart';
 import 'package:to_deer/pages/add_list/add_tasks_page.dart';
-import 'package:to_deer/shared/form_constants.dart';
+import 'package:to_deer/shared/constants.dart';
 import 'package:to_deer/shared/task_form/date_field.dart';
 
 class AddListPage extends StatelessWidget {
