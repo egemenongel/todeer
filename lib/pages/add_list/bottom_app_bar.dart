@@ -29,9 +29,6 @@ class ListBottomBar extends StatelessWidget {
               child: TextButton(
                   style: const ButtonStyle(),
                   onPressed: () {
-                    // ListModel newList = ListModel(
-                    //     title: _taskListManager.listTitle!,
-                    //     dueDate: _taskListManager.listDueDate!);
                     var firestore = DatabaseService();
                     firestore.addList(
                       list,

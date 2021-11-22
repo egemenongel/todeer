@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:to_deer/models/list.dart';
 import 'package:to_deer/pages/add_list/add_list_page.dart';
 import 'package:to_deer/shared/form_constants.dart';
 import 'package:to_deer/shared/task_form/date_field.dart';
-import 'package:to_deer/utils/task_list_manager.dart';
 
 class ListTitlePage extends StatelessWidget {
   ListTitlePage({Key? key}) : super(key: key);
@@ -56,7 +54,6 @@ class ListTitlePage extends StatelessWidget {
                     title: listTitle.text,
                     dueDate: deadline.text,
                   );
-                  // context.read<TaskListManager>().newList(list);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(

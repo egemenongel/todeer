@@ -1,12 +1,9 @@
 import 'dart:collection';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:to_deer/models/list.dart';
 import 'package:to_deer/models/task.dart';
 
 class TaskListManager extends ChangeNotifier {
-  // String? listTitle;
-  // String? listDueDate;
   final List<TaskModel> _taskList = [];
   bool duration = true;
   int total = 0;
@@ -42,11 +39,6 @@ class TaskListManager extends ChangeNotifier {
     _taskList.clear();
     notifyListeners();
   }
-
-  // newList(ListModel list) {
-  //   listTitle = list.title;
-  //   listDueDate = list.dueDate;
-  // }
 
   checkboxToggle(TaskModel task) {
     task.toggle();
