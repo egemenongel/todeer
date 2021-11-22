@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_deer/models/task.dart';
 import 'package:to_deer/pages/list/report_widget.dart';
 import 'package:to_deer/services/database_service.dart';
 import 'package:to_deer/pages/add_list/list_title_page.dart';
@@ -62,15 +63,24 @@ class ListPage extends StatelessWidget {
                                   var task = snapshot.data.docs[index];
                                   return TaskTile(
                                       index: index,
+                                      task: TaskModel(
+                                        title: task["title"],
+                                        startTime: task["startTime"],
+                                        finishTime: task["finishTime"],
+                                        duration: task["duration"],
+                                        isCompleted: task["isCompleted"],
+                                        dueDate: task["dueDate"],
+                                        notes: task["notes"],
+                                      ),
                                       sortedList: firestore
                                           .orderedTasks(list!.reference),
-                                      taskTitle: task["title"],
-                                      startTime: task["startTime"],
-                                      finishTime: task["finishTime"],
-                                      duration: task["duration"],
-                                      isCompleted: task["isCompleted"],
-                                      dueDate: task["dueDate"],
-                                      notes: task["notes"],
+                                      // taskTitle: task["title"],
+                                      // startTime: task["startTime"],
+                                      // finishTime: task["finishTime"],
+                                      // duration: task["duration"],
+                                      // isCompleted: task["isCompleted"],
+                                      // dueDate: task["dueDate"],
+                                      // notes: task["notes"],
                                       checkboxCallback: (checkboxState) =>
                                           firestore.checkboxToggle(
                                               task, checkboxState!),

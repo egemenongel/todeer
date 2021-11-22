@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:to_deer/models/task.dart';
 import 'package:to_deer/services/size_helper.dart';
 import 'package:to_deer/pages/list/dialogs/edit_task_dialog.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -8,27 +9,29 @@ class TaskTile extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
   const TaskTile({
     required this.index,
-    required this.taskTitle,
-    required this.startTime,
-    required this.finishTime,
-    required this.duration,
-    required this.dueDate,
-    required this.notes,
-    required this.isCompleted,
+    // required this.taskTitle,
+    // required this.startTime,
+    // required this.finishTime,
+    // required this.duration,
+    // required this.dueDate,
+    // required this.notes,
+    // required this.isCompleted,
     required this.checkboxCallback,
     required this.deleteCallback,
     required this.sortedList,
+    required this.task,
   });
 
   final int index;
   final Query sortedList;
-  final String taskTitle;
-  final String startTime;
-  final String finishTime;
-  final String duration;
-  final String dueDate;
-  final String notes;
-  final bool isCompleted;
+  final TaskModel task;
+  // final String taskTitle;
+  // final String startTime;
+  // final String finishTime;
+  // final String duration;
+  // final String dueDate;
+  // final String notes;
+  // final bool isCompleted;
   final void Function(bool?)? checkboxCallback;
   final void Function()? deleteCallback;
   @override
@@ -46,11 +49,11 @@ class TaskTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  taskTitle,
+                  task.title,
                   style: TextStyle(
                       color:
                           (index % 2) == 1 ? Colors.indigo : Colors.blue[900],
-                      decoration: isCompleted
+                      decoration: task.isCompleted!
                           ? TextDecoration.lineThrough
                           : TextDecoration.none,
                       decorationColor:
@@ -58,7 +61,7 @@ class TaskTile extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    if (dueDate.isNotEmpty) ...[
+                    if (task.dueDate!.isNotEmpty) ...[
                       const SizedBox(
                         height: 5,
                       ),
@@ -73,7 +76,7 @@ class TaskTile extends StatelessWidget {
                             width: 5.0,
                           ),
                           Text(
-                            dueDate,
+                            task.dueDate!,
                             style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 12.0,
@@ -87,7 +90,7 @@ class TaskTile extends StatelessWidget {
                     ] else ...[
                       const SizedBox(),
                     ],
-                    if (notes.isNotEmpty) ...[
+                    if (task.notes!.isNotEmpty) ...[
                       Icon(
                         Icons.sticky_note_2_sharp,
                         color: Colors.indigo[900],
@@ -101,7 +104,7 @@ class TaskTile extends StatelessWidget {
             leading: Checkbox(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)),
-              value: isCompleted,
+              value: task.isCompleted,
               onChanged: checkboxCallback,
               activeColor: (index % 2) == 1 ? Colors.orange : Colors.deepOrange,
             ),
@@ -110,7 +113,7 @@ class TaskTile extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  duration != ""
+                  task.duration != ""
                       ? Container(
                           padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
@@ -118,13 +121,13 @@ class TaskTile extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
-                            "$duration mins",
+                            "${task.duration!} mins",
                             style: const TextStyle(
                                 fontSize: 12.0, color: Colors.white),
                           ),
                         )
                       : const SizedBox(),
-                  startTime != ""
+                  task.startTime != ""
                       ? Container(
                           padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
@@ -132,18 +135,18 @@ class TaskTile extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
-                            startTime,
+                            task.startTime!,
                             style: const TextStyle(
                                 fontSize: 12.0, color: Colors.white),
                           ),
                         )
                       : const SizedBox(),
-                  finishTime != "" && startTime != ""
+                  task.finishTime != "" && task.startTime != ""
                       ? const SizedBox(
                           width: 2.0,
                         )
                       : const SizedBox(),
-                  finishTime != ""
+                  task.finishTime != ""
                       ? Container(
                           padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
@@ -151,7 +154,7 @@ class TaskTile extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
-                            finishTime,
+                            task.finishTime!,
                             style: const TextStyle(
                                 fontSize: 12.0, color: Colors.white),
                           ),
