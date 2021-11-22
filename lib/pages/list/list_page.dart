@@ -74,13 +74,6 @@ class ListPage extends StatelessWidget {
                                       ),
                                       sortedList: firestore
                                           .orderedTasks(list!.reference),
-                                      // taskTitle: task["title"],
-                                      // startTime: task["startTime"],
-                                      // finishTime: task["finishTime"],
-                                      // duration: task["duration"],
-                                      // isCompleted: task["isCompleted"],
-                                      // dueDate: task["dueDate"],
-                                      // notes: task["notes"],
                                       checkboxCallback: (checkboxState) =>
                                           firestore.checkboxToggle(
                                               task, checkboxState!),

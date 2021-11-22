@@ -9,13 +9,6 @@ class TaskTile extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
   const TaskTile({
     required this.index,
-    // required this.taskTitle,
-    // required this.startTime,
-    // required this.finishTime,
-    // required this.duration,
-    // required this.dueDate,
-    // required this.notes,
-    // required this.isCompleted,
     required this.checkboxCallback,
     required this.deleteCallback,
     required this.sortedList,
@@ -25,13 +18,6 @@ class TaskTile extends StatelessWidget {
   final int index;
   final Query sortedList;
   final TaskModel task;
-  // final String taskTitle;
-  // final String startTime;
-  // final String finishTime;
-  // final String duration;
-  // final String dueDate;
-  // final String notes;
-  // final bool isCompleted;
   final void Function(bool?)? checkboxCallback;
   final void Function()? deleteCallback;
   @override
