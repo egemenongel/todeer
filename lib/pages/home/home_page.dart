@@ -24,8 +24,8 @@ class HomePage extends StatelessWidget {
         heroTag: null,
         child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => ListTitlePage()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddListPage()));
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

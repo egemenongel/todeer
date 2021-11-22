@@ -4,8 +4,8 @@ import 'package:to_deer/pages/add_list/add_tasks_page.dart';
 import 'package:to_deer/shared/form_constants.dart';
 import 'package:to_deer/shared/task_form/date_field.dart';
 
-class ListTitlePage extends StatelessWidget {
-  ListTitlePage({Key? key}) : super(key: key);
+class AddListPage extends StatelessWidget {
+  AddListPage({Key? key}) : super(key: key);
   final listTitle = TextEditingController();
   final deadline = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -57,7 +57,7 @@ class ListTitlePage extends StatelessWidget {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => AddListPage(list: list)));
+                          builder: (context) => AddTasksPage(list: list)));
                 }
               },
               child: const Text("Next"),

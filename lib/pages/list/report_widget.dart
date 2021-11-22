@@ -138,7 +138,7 @@ class ReportWidget extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ListTitlePage()));
+                                builder: (context) => AddListPage()));
                       },
                     ),
                   ],
