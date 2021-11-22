@@ -1,110 +1,70 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:to_deer/models/list.dart';
-import 'package:to_deer/models/task.dart';
-import 'package:to_deer/pages/add_list/current_list.dart';
-import 'package:to_deer/utils/form_manager.dart';
-import 'package:to_deer/utils/task_list_manager.dart';
-import 'package:to_deer/shared/task_form/task_form.dart';
-import 'package:to_deer/pages/add_list/bottom_app_bar.dart';
+import 'package:to_deer/pages/add_list/add_tasks_page.dart';
+import 'package:to_deer/shared/form_constants.dart';
+import 'package:to_deer/shared/task_form/date_field.dart';
 
-class AddListPage extends StatefulWidget {
-  const AddListPage({Key? key, required this.list}) : super(key: key);
-  final ListModel list;
-  @override
-  State<AddListPage> createState() => _AddListPageState();
-}
-
-class _AddListPageState extends State<AddListPage> {
-  final taskTitle = TextEditingController();
-  final startTime = TextEditingController();
-  final finishTime = TextEditingController();
-  final duration = TextEditingController();
-  final dueDate = TextEditingController();
-  final notes = TextEditingController();
+class ListTitlePage extends StatelessWidget {
+  ListTitlePage({Key? key}) : super(key: key);
+  final listTitle = TextEditingController();
+  final deadline = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
-  void _clearForm() {
-    _formKey.currentState!.reset();
-    taskTitle.clear();
-    startTime.clear();
-    finishTime.clear();
-    duration.clear();
-    dueDate.clear();
-    notes.clear();
-  }
-
-  @override
-  void dispose() {
-    taskTitle.dispose();
-    startTime.dispose();
-    finishTime.dispose();
-    duration.dispose();
-    dueDate.dispose();
-    notes.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
-    var _taskListManager = Provider.of<TaskListManager>(context, listen: false);
     return Scaffold(
-      body: SingleChildScrollView(
+      resizeToAvoidBottomInset: false,
+      body: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 50.0,
+        ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 70,
-            ),
-            Text(
-              widget.list.title,
-              style: TextStyle(
-                fontSize: 40.0,
-                color: Colors.blueGrey[700],
+            Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: listTitle,
+                    decoration: InputDecoration(
+                        labelText: "List Title",
+                        labelStyle: const TextStyle(fontSize: 14),
+                        enabledBorder:
+                            listTitle.text.isNotEmpty ? taskFormBorder() : null,
+                        border: taskFormBorder()),
+                    autofocus: true,
+                    validator: (val) => listTitle.text.isEmpty
+                        ? "Please enter a list title"
+                        : null,
+                  ),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+                  DateField(
+                    labelText: "Deadline",
+                    controller: deadline,
+                  ),
+                ],
               ),
-            ),
-            const SizedBox(
-              height: 70,
-            ),
-            TaskForm(
-              formKey: _formKey,
-              taskTitle: taskTitle,
-              startTime: startTime,
-              finishTime: finishTime,
-              duration: duration,
-              dueDate: dueDate,
-              notes: notes,
-            ),
-            const SizedBox(
-              height: 30,
             ),
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  TaskModel task = TaskModel(
-                    title: taskTitle.text,
-                    startTime: startTime.text,
-                    finishTime: finishTime.text,
-                    duration: duration.text,
-                    dueDate: dueDate.text,
-                    isCompleted: false,
-                    notes: notes.text,
+                  ListModel list = ListModel(
+                    title: listTitle.text,
+                    dueDate: deadline.text,
                   );
-                  _taskListManager.addTask(task);
-                  _clearForm();
-                  FocusScope.of(context).unfocus();
-                  Provider.of<FormManager>(context, listen: false)
-                      .changeDurationBool(true);
-                  Provider.of<FormManager>(context, listen: false)
-                      .changeTimeBool(true);
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AddListPage(list: list)));
                 }
               },
-              child: const Text("Add"),
+              child: const Text("Next"),
             ),
-            const CurrentList(),
           ],
         ),
       ),
-      bottomNavigationBar: ListBottomBar(list: widget.list),
     );
   }
 }

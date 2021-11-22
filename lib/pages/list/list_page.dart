@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:to_deer/models/task.dart';
 import 'package:to_deer/pages/list/report_widget.dart';
 import 'package:to_deer/services/database_service.dart';
-import 'package:to_deer/pages/add_list/list_title_page.dart';
+import 'package:to_deer/pages/add_list/add_list_page.dart';
 import 'package:to_deer/services/size_helper.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 import 'package:to_deer/pages/list/dialogs/add_task_dialog.dart';
