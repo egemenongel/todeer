@@ -50,16 +50,14 @@ ToDeer is a simple task management app built with Flutter. Users can add lists t
 * [X] Drawer.
 * [X] Splash Screen
 * [X] Logo
-
+* [X] Test the app.
+* [X] Initial Release.
 * [ ] Add date for lists.
 * [ ] Completed tasks to bottom.
 * [ ] Ordering tasks and lists.
 * [ ] Notification on due date.
 * [ ] Store locally?
-* [ ] Add details to the project.
-* [ ] Add license.
-* [ ] Test the app.
-* [ ] Release.
+
     BUGS
 
 * [X] Sometimes delete list method is not working.
@@ -85,3 +83,8 @@ ToDeer is a simple task management app built with Flutter. Users can add lists t
 ### List Report
 
 <img src="https://user-images.githubusercontent.com/73590188/142590617-0abc93af-423b-47ed-9e8e-3bfcb8898ffb.png" alt="List Report" width="400"/>
+
+## License
+
+This project is licensed under the MIT license.
+See <a href="#">LICENSE</a> for more information.
