@@ -86,7 +86,6 @@ class ReportWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              // Text("on $title tasks"),
               Container(
                 height: displayHeight(context) < displayWidth(context)
                     ? displayWidth(context) / 16

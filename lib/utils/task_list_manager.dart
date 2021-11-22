@@ -43,11 +43,6 @@ class TaskListManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  // setTitle(String title) {
-  //   listTitle = title;
-  //   notifyListeners();
-  // }
-
   newList(ListModel list) {
     listTitle = list.title;
     listDueDate = list.dueDate;
