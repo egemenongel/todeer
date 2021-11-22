@@ -1,6 +1,7 @@
 # todeer
 
 <p align="center"> <img src="https://user-images.githubusercontent.com/73590188/142592337-5181efb1-361d-4df2-a48b-343004d587cb.png" alt="Logo" width="50%"/> </p>
+<p align="center"> <a href="https://play.google.com/store/apps/details?id=com.egemenongel.to_deer"> <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Link" width="50%"/> </a></p>
 
 ## **Table of Contents**
 
