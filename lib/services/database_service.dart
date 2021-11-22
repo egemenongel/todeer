@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:to_deer/models/list.dart';
 import 'package:to_deer/models/task.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 
@@ -31,13 +32,15 @@ class DatabaseService {
   }
 
   Future<void> addList(
-      String listTitle, TaskListManager taskListManager) async {
+      ListModel listModel, TaskListManager taskListManager) async {
     _firestore
         .collection("storage")
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .set({"storage": "storage"});
     var list = listsCollection.doc();
-    list.set({"title": listTitle});
+    list.set(
+      listModel.toMap(),
+    );
     for (TaskModel task in taskListManager.taskList) {
       list.collection("tasks").doc().set({
         "title": task.title,
