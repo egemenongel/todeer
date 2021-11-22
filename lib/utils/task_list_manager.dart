@@ -5,8 +5,8 @@ import 'package:to_deer/models/list.dart';
 import 'package:to_deer/models/task.dart';
 
 class TaskListManager extends ChangeNotifier {
-  String? listTitle;
-  String? listDueDate;
+  // String? listTitle;
+  // String? listDueDate;
   final List<TaskModel> _taskList = [];
   bool duration = true;
   int total = 0;
@@ -43,10 +43,10 @@ class TaskListManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  newList(ListModel list) {
-    listTitle = list.title;
-    listDueDate = list.dueDate;
-  }
+  // newList(ListModel list) {
+  //   listTitle = list.title;
+  //   listDueDate = list.dueDate;
+  // }
 
   checkboxToggle(TaskModel task) {
     task.toggle();

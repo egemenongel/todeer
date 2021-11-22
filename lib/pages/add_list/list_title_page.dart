@@ -56,11 +56,11 @@ class ListTitlePage extends StatelessWidget {
                     title: listTitle.text,
                     dueDate: deadline.text,
                   );
-                  context.read<TaskListManager>().newList(list);
+                  // context.read<TaskListManager>().newList(list);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const AddListPage()));
+                          builder: (context) => AddListPage(list: list)));
                 }
               },
               child: const Text("Next"),

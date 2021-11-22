@@ -5,7 +5,8 @@ import 'package:to_deer/services/database_service.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 
 class ListBottomBar extends StatelessWidget {
-  const ListBottomBar({Key? key}) : super(key: key);
+  const ListBottomBar({Key? key, required this.list}) : super(key: key);
+  final ListModel list;
   @override
   Widget build(BuildContext context) {
     var _taskListManager = Provider.of<TaskListManager>(context, listen: false);
@@ -28,12 +29,12 @@ class ListBottomBar extends StatelessWidget {
               child: TextButton(
                   style: const ButtonStyle(),
                   onPressed: () {
-                    ListModel newList = ListModel(
-                        title: _taskListManager.listTitle!,
-                        dueDate: _taskListManager.listDueDate);
+                    // ListModel newList = ListModel(
+                    //     title: _taskListManager.listTitle!,
+                    //     dueDate: _taskListManager.listDueDate!);
                     var firestore = DatabaseService();
                     firestore.addList(
-                      newList,
+                      list,
                       _taskListManager,
                     );
                     Navigator.popUntil(context, (route) => route.isFirst);

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
+import 'package:to_deer/models/list.dart';
 import 'package:to_deer/pages/list/list_page.dart';
 import 'package:to_deer/services/database_service.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
@@ -12,11 +13,12 @@ class TaskListTile extends StatelessWidget {
   const TaskListTile({
     Key? key,
     required this.list,
+    required this.listModel,
     required this.index,
   }) : super(key: key);
   final int index;
-
   final DocumentSnapshot list;
+  final ListModel listModel;
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +46,32 @@ class TaskListTile extends StatelessWidget {
             child: ListTile(
               tileColor: Colors.white,
               title: Text(
-                list["title"],
+                listModel.title,
                 style: TextStyle(
                     color: index % 2 == 1 ? Colors.indigo[800] : Colors.white),
               ),
+              // subtitle: Row(
+              //   children: [
+              //     Icon(
+              //       Icons.date_range,
+              //       size: 12.0,
+              //       color: index % 2 == 1 ? Colors.indigo[800] : Colors.white,
+              //     ),
+              //     const SizedBox(
+              //       width: 5.0,
+              //     ),
+              //     Text(
+              //       list["dueDate"],
+              //       style: TextStyle(
+              //         color: index % 2 == 1 ? Colors.indigo[800] : Colors.white,
+              //         fontSize: 10.0,
+              //       ),
+              //     ),
+              //     const SizedBox(
+              //       width: 5.0,
+              //     ),
+              //   ],
+              // ),
               trailing: FutureBuilder(
                 future: DatabaseService().getTaskList(list.reference),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
