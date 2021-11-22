@@ -25,9 +25,10 @@ class HomeDrawer extends StatelessWidget {
             ),
             ListTile(
               title: Text(
-                "${FirebaseAuth.instance.currentUser!.email}",
+                FirebaseAuth.instance.currentUser!.email ??
+                    "You logged in as guest",
                 style: const TextStyle(
-                  fontSize: 10.0,
+                  fontSize: 12.0,
                   color: Colors.white,
                 ),
               ),
