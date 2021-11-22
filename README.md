@@ -87,4 +87,4 @@ ToDeer is a simple task management app built with Flutter. Users can add lists t
 ## License
 
 This project is licensed under the MIT license.
-See <a href="#">LICENSE</a> for more information.
+See <a href="https://github.com/egemenongel/todeer/blob/master/LICENSE">LICENSE</a> for more information.
