@@ -22,7 +22,7 @@
 ToDeer is a simple task management app built with Flutter. Users can add lists to remember tasks should be done and plan their schedule.
 
 ## Roadmap
-
+<!--
 * [X] After adding a task, automatically focus to TextFormField.
 * [X] Fix AM PM for duration calculation and checking start and finish dates.
 * [X] Edit tasks.
@@ -54,12 +54,13 @@ ToDeer is a simple task management app built with Flutter. Users can add lists t
 * [X] Test the app.
 * [X] Initial Release.
 * [X] Add date for lists.
+-->
 * [ ] Checkboxes for lists.
 * [ ] Completed tasks to bottom.
 * [ ] Ordering tasks and lists.
 * [ ] Notification on due date.
 * [ ] Store locally?
-
+<!--
     BUGS
 
 * [X] Sometimes delete list method is not working.
@@ -67,6 +68,7 @@ ToDeer is a simple task management app built with Flutter. Users can add lists t
 * [X] On landscape mode app bar does not fit.
 * [X] App bar safe area.
 * [X] Clear form when adding tasks.
+-->
 
 ## Screenshots
 
