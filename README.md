@@ -59,7 +59,6 @@ ToDeer is a simple task management app built with Flutter. Users can add lists t
 * [ ] Completed tasks to bottom.
 * [ ] Ordering tasks and lists.
 * [ ] Notification on due date.
-* [ ] Store locally?
 <!--
     BUGS
 
