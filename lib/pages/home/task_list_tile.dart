@@ -36,19 +36,18 @@ class TaskListTile extends StatelessWidget {
         return Slidable(
           child: Container(
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.white),
                 color: index % 2 == 1
-                    ? Colors.lightBlue[200]
-                    : Colors.lightBlue[900],
+                    ? const Color(0xff393E9E)
+                    : const Color(0xff272A6B),
                 borderRadius: const BorderRadius.only(
-                  bottomRight: Radius.circular(40),
+                  bottomRight: Radius.circular(30),
                 )),
             child: ListTile(
               tileColor: Colors.white,
               title: Text(
                 listModel.title,
                 style: TextStyle(
-                    color: index % 2 == 1 ? Colors.indigo[800] : Colors.white),
+                    color: index % 2 == 1 ? Colors.white : Colors.white),
               ),
               subtitle: listModel.dueDate != ""
                   ? Row(
@@ -56,9 +55,7 @@ class TaskListTile extends StatelessWidget {
                         Icon(
                           Icons.date_range,
                           size: 12.0,
-                          color: index % 2 == 1
-                              ? Colors.indigo[800]
-                              : Colors.white,
+                          color: index % 2 == 1 ? Colors.white : Colors.white,
                         ),
                         const SizedBox(
                           width: 5.0,
@@ -66,9 +63,7 @@ class TaskListTile extends StatelessWidget {
                         Text(
                           listModel.dueDate!,
                           style: TextStyle(
-                            color: index % 2 == 1
-                                ? Colors.indigo[800]
-                                : Colors.white,
+                            color: index % 2 == 1 ? Colors.white : Colors.white,
                             fontSize: 10.0,
                           ),
                         ),
@@ -86,8 +81,7 @@ class TaskListTile extends StatelessWidget {
                   return Text(
                     "${_taskListManager.completedCount}/${snapshot.data.docs.length}",
                     style: TextStyle(
-                        color:
-                            index % 2 == 1 ? Colors.indigo[800] : Colors.white),
+                        color: index % 2 == 1 ? Colors.white : Colors.white),
                   );
                 },
               ),
@@ -104,46 +98,32 @@ class TaskListTile extends StatelessWidget {
           ),
           actionPane: const SlidableScrollActionPane(),
           actions: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.white),
+            SlideAction(
+              onTap: () => showDialog(
+                context: context,
+                builder: (context) => DeleteListDialog(list: list),
               ),
-              child: SlideAction(
-                onTap: () => showDialog(
-                  context: context,
-                  builder: (context) => DeleteListDialog(list: list),
-                ),
-                child: const Icon(
-                  Icons.delete,
-                  color: Colors.white,
-                ),
-                decoration: const BoxDecoration(
-                  color: Colors.red,
-                ),
+              child: const Icon(
+                Icons.delete,
+                color: Colors.white,
+              ),
+              decoration: const BoxDecoration(
+                color: Colors.red,
               ),
             ),
-            Container(
+            SlideAction(
+              onTap: () => showDialog(
+                context: context,
+                builder: (context) => EditListDialog(
+                  list: list,
+                ),
+              ),
+              child: const Icon(
+                Icons.edit,
+                color: Colors.white,
+              ),
               decoration: const BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(color: Colors.white),
-                top: BorderSide(
-                  color: Colors.white,
-                ),
-              )),
-              child: SlideAction(
-                onTap: () => showDialog(
-                  context: context,
-                  builder: (context) => EditListDialog(
-                    list: list,
-                  ),
-                ),
-                child: const Icon(
-                  Icons.edit,
-                  color: Colors.white,
-                ),
-                decoration: const BoxDecoration(
-                  color: Colors.grey,
-                ),
+                color: Colors.grey,
               ),
             ),
           ],

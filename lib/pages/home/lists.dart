@@ -12,7 +12,10 @@ class Lists extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
-        color: Colors.blueAccent,
+        gradient: LinearGradient(colors: [
+          Color(0xff050952),
+          Color(0xff09119E),
+        ]),
       ),
       child: Column(
         children: [

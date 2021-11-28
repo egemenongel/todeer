@@ -25,7 +25,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             )),
       ],
       toolbarHeight: appBarHeight(context),
-      backgroundColor: Colors.red,
+      backgroundColor: const Color(0xffF31715),
       shadowColor: Colors.indigo,
       title: SizedBox(
         height: logoHeight(context),
@@ -37,7 +37,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-        bottomRight: Radius.circular(50),
+        bottomRight: Radius.circular(40),
       )),
     );
   }

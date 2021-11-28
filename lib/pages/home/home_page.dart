@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
       ),
       body: const Lists(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepOrange[800],
+        backgroundColor: const Color(0xffF31715),
         heroTag: null,
         child: const Icon(Icons.add),
         onPressed: () {
