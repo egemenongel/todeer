@@ -89,7 +89,7 @@ class LoginPage extends StatelessWidget {
                     onPressed: () {
                       context.read<AuthService>().signInAnon();
                     },
-                    child: const Text("Skip"),
+                    child: const Text("Login as Guest"),
                     style: ButtonStyle(
                       foregroundColor:
                           MaterialStateProperty.all<Color>(Colors.blueGrey),
