@@ -22,9 +22,7 @@ class ReportWidget extends StatelessWidget {
       body: Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-          height: displayHeight(context) < displayWidth(context)
-              ? displayHeight(context)
-              : displayHeight(context) / 2,
+          height: displayHeight(context) / 2,
           width: displayWidth(context),
           decoration: const BoxDecoration(
             color: Colors.indigoAccent,
@@ -87,9 +85,7 @@ class ReportWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                height: displayHeight(context) < displayWidth(context)
-                    ? displayWidth(context) / 16
-                    : bottomBar(context),
+                height: bottomBar(context),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),

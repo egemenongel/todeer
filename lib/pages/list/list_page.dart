@@ -92,9 +92,7 @@ class ListPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: displayHeight(context) < displayWidth(context)
-                          ? displayWidth(context) / 16
-                          : bottomBar(context),
+                      height: bottomBar(context),
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10),
