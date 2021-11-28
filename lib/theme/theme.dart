@@ -5,9 +5,10 @@ class MyTheme {
     textTheme: TextTheme(headline2: TextStyle(color: Colors.deepPurple[700])),
     primarySwatch: Colors.blueGrey,
     inputDecorationTheme: const InputDecorationTheme(
+        fillColor: Colors.white,
         labelStyle: TextStyle(
-      color: Colors.blueGrey,
-      fontSize: 14.0,
-    )),
+          color: Colors.blueGrey,
+          fontSize: 14.0,
+        )),
   );
 }
