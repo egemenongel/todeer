@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_deer/services/size_helper.dart';
 import 'package:to_deer/shared/constants.dart';
 import 'package:to_deer/services/auth_service.dart';
 import 'package:to_deer/utils/form_manager.dart';
@@ -16,11 +17,22 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+        body: SingleChildScrollView(
+      child: Container(
+        height: displayHeight(context),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Color(0xff050952),
+            Color(0xff09119E),
+          ]),
+        ),
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset(
+              "images/icons/24.png",
+              color: Colors.white,
+            ),
             Form(
               key: _formKey,
               child: Column(
@@ -30,6 +42,7 @@ class SignUpPage extends StatelessWidget {
                     validator: (val) =>
                         val!.isEmpty ? "Please enter your email" : null,
                     decoration: InputDecoration(
+                        filled: true,
                         prefixIcon: const Icon(Icons.account_circle_rounded),
                         labelText: "E-mail",
                         border: authFormBorder()),
@@ -40,6 +53,7 @@ class SignUpPage extends StatelessWidget {
                     validator: (val) =>
                         val!.isEmpty ? "Please enter your password" : null,
                     decoration: InputDecoration(
+                        filled: true,
                         prefixIcon: const Icon(Icons.vpn_key_rounded),
                         labelText: "Password",
                         border: authFormBorder()),
@@ -106,6 +120,6 @@ class SignUpPage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
