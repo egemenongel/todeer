@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:to_deer/pages/add_list/add_list_page.dart';
-import 'package:to_deer/pages/home/home_app_bar.dart';
-import 'package:to_deer/pages/home/home_drawer.dart';
+import 'package:to_deer/pages/home/app_bar.dart';
+import 'package:to_deer/pages/home/drawer.dart';
 import 'package:to_deer/pages/home/lists.dart';
 import 'package:to_deer/services/size_helper.dart';
 
