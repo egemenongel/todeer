@@ -16,6 +16,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       actions: [
         IconButton(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onPressed: () {
               scaffoldKey!.currentState!.openEndDrawer();
             },
