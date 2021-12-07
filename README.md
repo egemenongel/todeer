@@ -67,6 +67,7 @@ ToDeer is a simple task management app built with Flutter. Users can add lists t
 * [X] On landscape mode app bar does not fit.
 * [X] App bar safe area.
 * [X] Clear form when adding tasks.
+* [ ] Not working on Samsung S8+.
 
 ## Screenshots
 
