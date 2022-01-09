@@ -5,13 +5,14 @@ extension ContextExtension on BuildContext {
 }
 
 extension MediaQueryExtension on BuildContext {
+  Size get size => mediaQuery.size;
   double get height => mediaQuery.size.height;
   double get width => mediaQuery.size.width;
 
   double get screenHeight =>
       mediaQuery.size.height - kToolbarHeight - kToolbarHeight * 1.2;
 
-  Size get appBarSize => size! / 10;
+  Size get appBarSize => size / 10;
   double get appBarHeight => height / 10;
   double get bottomBar => height / 11;
   double get taskFormWidth => width / 1.25;
