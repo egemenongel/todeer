@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/services/size_helper.dart';
-import 'package:to_deer/shared/constants.dart';
+import 'package:to_deer/core/contants/form_constants.dart';
+import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/services/auth_service.dart';
 import 'package:to_deer/utils/form_manager.dart';
 
@@ -19,12 +19,13 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: displayHeight(context),
+          height: context.height,
           decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Color(0xff050952),
-              Color(0xff09119E),
-            ]),
+            // gradient: LinearGradient(colors: [
+            //   Color(0xffAC2216),
+            //   Color(0xffCA6357),
+            // ]),
+            color: Color(0xffFF1616),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
@@ -49,7 +50,7 @@ class LoginPage extends StatelessWidget {
                           filled: true,
                           prefixIcon: const Icon(Icons.account_circle_rounded),
                           labelText: "E-mail",
-                          border: authFormBorder()),
+                          border: FormConstants.authFormBorder()),
                     ),
                     const SizedBox(height: 15.0),
                     TextFormField(
@@ -60,7 +61,7 @@ class LoginPage extends StatelessWidget {
                           filled: true,
                           prefixIcon: const Icon(Icons.vpn_key_rounded),
                           labelText: "Password",
-                          border: authFormBorder()),
+                          border: FormConstants.authFormBorder()),
                     ),
                   ],
                 ),

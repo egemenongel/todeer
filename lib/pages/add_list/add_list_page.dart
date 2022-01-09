@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:to_deer/core/components/task_form/date_field.dart';
 import 'package:to_deer/core/contants/form_constants.dart';
 import 'package:to_deer/models/list.dart';
-import 'package:to_deer/pages/add_list/add_tasks_page.dart';
+import 'package:to_deer/pages/add_tasks/add_tasks_page.dart';
 
 class AddListPage extends StatelessWidget {
   AddListPage({Key? key}) : super(key: key);
