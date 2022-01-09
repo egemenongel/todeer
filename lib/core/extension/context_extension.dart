@@ -11,6 +11,12 @@ extension MediaQueryExtension on BuildContext {
   double get screenHeight =>
       mediaQuery.size.height - kToolbarHeight - kToolbarHeight * 1.2;
 
+  Size get appBarSize => size! / 10;
+  double get appBarHeight => height / 10;
+  double get bottomBar => height / 11;
+  double get taskFormWidth => width / 1.25;
+  double get logoHeight => height / 4;
+
   double dynamicHeight(double value) => height * value;
   double dynamicWidth(double value) => width * value;
 

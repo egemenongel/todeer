@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/services/size_helper.dart';
+import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/shared/constants.dart';
 import 'package:to_deer/services/auth_service.dart';
 import 'package:to_deer/utils/form_manager.dart';
@@ -19,7 +19,7 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
-        height: displayHeight(context),
+        height: context.height,
         decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Color(0xff050952),

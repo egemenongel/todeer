@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/services/auth_service.dart';
-import 'package:to_deer/services/size_helper.dart';
 import 'package:provider/provider.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -10,7 +10,7 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: displayWidth(context) / 3,
+      width: context.width / 3,
       child: Drawer(
           child: Container(
         color: Colors.indigoAccent,

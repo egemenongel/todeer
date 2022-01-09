@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/models/task.dart';
-import 'package:to_deer/services/size_helper.dart';
 import 'package:to_deer/pages/list/dialogs/edit_task_dialog.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:to_deer/shared/constants.dart';
@@ -95,7 +95,7 @@ class TaskTile extends StatelessWidget {
               activeColor: (index % 2) == 1 ? Colors.orange : Colors.deepOrange,
             ),
             trailing: SizedBox(
-              width: displayWidth(context) / 4,
+              width: context.width / 4,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

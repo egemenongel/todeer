@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/services/size_helper.dart';
+import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/shared/constants.dart';
 import 'package:to_deer/utils/form_manager.dart';
 import 'package:to_deer/shared/task_form/date_field.dart';
@@ -67,7 +67,7 @@ class _TaskFormState extends State<TaskForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: taskFormWidth(context),
+        width: context.taskFormWidth,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.deepOrange[100],
@@ -225,7 +225,7 @@ class _TaskFormState extends State<TaskForm> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SizedBox(
-                              width: displayWidth(context) / 6,
+                              width: context.width / 6,
                             ),
                             Expanded(
                               child: TextFormField(
@@ -286,7 +286,7 @@ class _TaskFormState extends State<TaskForm> {
                               ),
                             ),
                             SizedBox(
-                              width: displayWidth(context) / 6,
+                              width: context.width / 6,
                             ),
                           ],
                         ),

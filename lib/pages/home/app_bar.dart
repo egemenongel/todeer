@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_deer/services/size_helper.dart';
+import 'package:to_deer/core/extension/context_extension.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   // ignore: use_key_in_widget_constructors
@@ -26,11 +26,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: Colors.white,
             )),
       ],
-      toolbarHeight: appBarHeight(context),
+      toolbarHeight: context.appBarHeight,
       backgroundColor: const Color(0xffF31715),
       shadowColor: Colors.indigo,
       title: SizedBox(
-        height: logoHeight(context),
+        height: context.logoHeight,
         child: const Image(
           fit: BoxFit.fitWidth,
           color: Colors.white,

@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/pages/add_list/add_list_page.dart';
-import 'package:to_deer/services/size_helper.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 import 'package:to_deer/pages/list/dialogs/add_task_dialog.dart';
 
@@ -22,8 +21,8 @@ class ReportWidget extends StatelessWidget {
       body: Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-          height: displayHeight(context) / 2,
-          width: displayWidth(context),
+          height: context.height / 2,
+          width: context.width,
           decoration: const BoxDecoration(
             color: Colors.indigoAccent,
             borderRadius: BorderRadius.only(
@@ -85,7 +84,7 @@ class ReportWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                height: bottomBar(context),
+                height: context.bottomBar,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),

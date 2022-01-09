@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/models/task.dart';
 import 'package:to_deer/pages/list/report_widget.dart';
 import 'package:to_deer/services/database_service.dart';
 import 'package:to_deer/pages/add_list/add_list_page.dart';
-import 'package:to_deer/services/size_helper.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
 import 'package:to_deer/pages/list/dialogs/add_task_dialog.dart';
 import 'package:to_deer/pages/list/dialogs/delete_task_dialog.dart';
@@ -28,14 +28,14 @@ class ListPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             elevation: 0,
-            toolbarHeight: appBarHeight(context),
+            toolbarHeight: context.appBarHeight,
             backgroundColor: Colors.red,
             shadowColor: Colors.indigo,
             title: Text(
               "${list!["title"]}",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: appBarHeight(context) / 3,
+                fontSize: context.appBarHeight / 3,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
@@ -43,7 +43,7 @@ class ListPage extends StatelessWidget {
           body: Container(
             color: Colors.red,
             child: Container(
-                width: displayWidth(context),
+                width: context.width,
                 padding: const EdgeInsets.only(top: 20),
                 decoration: const BoxDecoration(
                   color: Colors.indigo,
@@ -92,7 +92,7 @@ class ListPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: bottomBar(context),
+                      height: context.bottomBar,
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10),
