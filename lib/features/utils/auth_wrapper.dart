@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/features/views/authenticate/sign_up/sign_up_page.dart';
+import 'package:to_deer/features/views/auth/sign_up/sign_up_page.dart';
+
 import 'package:to_deer/features/views/home/home_page.dart';
 import 'package:to_deer/views/authenticate/login/login_page.dart';
 

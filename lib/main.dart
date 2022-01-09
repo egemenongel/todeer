@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:to_deer/services/auth_service.dart';
-import 'package:to_deer/theme/theme.dart';
-import 'package:to_deer/utils/form_manager.dart';
-import 'package:to_deer/utils/task_list_manager.dart';
+import 'package:to_deer/core/theme/app_theme.dart';
+import 'package:to_deer/features/services/auth_service.dart';
+
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:to_deer/utils/auth_wrapper.dart';
+import 'package:to_deer/features/utils/auth_wrapper.dart';
+import 'package:to_deer/features/utils/form_manager.dart';
+import 'package:to_deer/features/utils/task_list_manager.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,7 +55,7 @@ class _MyAppState extends State<MyApp> {
               child: child!,
             ),
             title: 'ToDeer',
-            theme: MyTheme.theme,
+            theme: appTheme,
             home: const AuthWrapper(),
             debugShowCheckedModeBanner: false,
           );
