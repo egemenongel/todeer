@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:to_deer/core/components/task_form/date_field.dart';
+import 'package:to_deer/core/contants/form_constants.dart';
 import 'package:to_deer/models/list.dart';
 import 'package:to_deer/pages/add_list/add_tasks_page.dart';
-import 'package:to_deer/shared/constants.dart';
-import 'package:to_deer/shared/task_form/date_field.dart';
 
 class AddListPage extends StatelessWidget {
   AddListPage({Key? key}) : super(key: key);
@@ -27,11 +27,13 @@ class AddListPage extends StatelessWidget {
                   TextFormField(
                     controller: listTitle,
                     decoration: InputDecoration(
-                        labelText: "List Title",
-                        labelStyle: const TextStyle(fontSize: 14),
-                        enabledBorder:
-                            listTitle.text.isNotEmpty ? taskFormBorder() : null,
-                        border: taskFormBorder()),
+                      labelText: "List Title",
+                      labelStyle: const TextStyle(fontSize: 14),
+                      enabledBorder: listTitle.text.isNotEmpty
+                          ? FormConstants.taskFormBorder()
+                          : null,
+                      border: FormConstants.taskFormBorder(),
+                    ),
                     autofocus: true,
                     validator: (val) => listTitle.text.isEmpty
                         ? "Please enter a list title"

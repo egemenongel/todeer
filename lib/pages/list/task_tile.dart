@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:to_deer/core/contants/form_constants.dart';
 import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/models/task.dart';
 import 'package:to_deer/pages/list/dialogs/edit_task_dialog.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:to_deer/shared/constants.dart';
 
 class TaskTile extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
@@ -62,7 +62,7 @@ class TaskTile extends StatelessWidget {
                             width: 5.0,
                           ),
                           Text(
-                            "${DateTime.parse(task.dueDate!).day} ${months[DateTime.parse(task.dueDate!).month - 1]} ",
+                            "${DateTime.parse(task.dueDate!).day} ${FormConstants.months[DateTime.parse(task.dueDate!).month - 1]} ",
                             style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 12.0,

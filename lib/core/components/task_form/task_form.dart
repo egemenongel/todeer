@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:to_deer/core/components/task_form/date_field.dart';
+import 'package:to_deer/core/components/task_form/time_field.dart';
+import 'package:to_deer/core/contants/form_constants.dart';
 import 'package:to_deer/core/extension/context_extension.dart';
-import 'package:to_deer/shared/constants.dart';
+
 import 'package:to_deer/utils/form_manager.dart';
-import 'package:to_deer/shared/task_form/date_field.dart';
-import 'package:to_deer/shared/task_form/time_field.dart';
 
 class TaskForm extends StatefulWidget {
   const TaskForm({
@@ -249,10 +250,10 @@ class _TaskFormState extends State<TaskForm> {
                                         listen: true)
                                     .duration,
                                 decoration: InputDecoration(
-                                    border: taskFormBorder(),
+                                    border: FormConstants.taskFormBorder(),
                                     enabledBorder:
                                         widget.duration.text.isNotEmpty
-                                            ? taskFormBorder()
+                                            ? FormConstants.taskFormBorder()
                                             : null,
                                     labelText: "Duration",
                                     errorStyle: const TextStyle(
@@ -315,9 +316,9 @@ class _TaskFormState extends State<TaskForm> {
                     minLines: 1, //Normal textInputField will be displayed
                     maxLines: 5, // when user presses enter it will adapt to it
                     decoration: InputDecoration(
-                      border: taskFormBorder(),
+                      border: FormConstants.taskFormBorder(),
                       enabledBorder: widget.notes.text.isNotEmpty
-                          ? taskFormBorder()
+                          ? FormConstants.taskFormBorder()
                           : null,
                       labelText: "Add Notes",
                     ),

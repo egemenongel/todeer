@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_deer/core/components/task_form/task_form.dart';
 import 'package:to_deer/models/list.dart';
 import 'package:to_deer/models/task.dart';
 import 'package:to_deer/pages/add_list/current_list.dart';
 import 'package:to_deer/utils/form_manager.dart';
 import 'package:to_deer/utils/task_list_manager.dart';
-import 'package:to_deer/shared/task_form/task_form.dart';
 import 'package:to_deer/pages/add_list/bottom_app_bar.dart';
 
 class AddTasksPage extends StatefulWidget {

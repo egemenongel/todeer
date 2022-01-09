@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_deer/shared/constants.dart';
+import 'package:to_deer/core/contants/form_constants.dart';
 
 class DateField extends StatefulWidget {
   const DateField({
@@ -52,9 +52,10 @@ class _TimeFieldState extends State<DateField> {
             iconSize: 15,
           ),
           labelText: widget.labelText,
-          enabledBorder:
-              widget.controller!.text.isNotEmpty ? taskFormBorder() : null,
-          border: taskFormBorder()),
+          enabledBorder: widget.controller!.text.isNotEmpty
+              ? FormConstants.taskFormBorder()
+              : null,
+          border: FormConstants.taskFormBorder()),
       controller: widget.controller,
       onTap: () => selectTime(widget.controller!),
       focusNode: widget.focusNode,
