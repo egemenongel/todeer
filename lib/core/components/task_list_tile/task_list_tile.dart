@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
+import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/features/models/list.dart';
 import 'package:to_deer/features/services/database_service.dart';
 import 'package:to_deer/features/utils/task_list_manager.dart';
@@ -35,36 +36,31 @@ class TaskListTile extends StatelessWidget {
         return Slidable(
           child: Container(
             decoration: BoxDecoration(
-              color: index % 2 == 1
-                  ? const Color(0xff393E9E)
-                  : const Color(0xff272A6B),
-              borderRadius: const BorderRadius.only(
-                bottomRight: Radius.circular(30),
+              color: context.colors.secondary,
+              borderRadius: BorderRadius.all(
+                context.normalRadius,
               ),
             ),
             child: ListTile(
               title: Text(
                 listModel.title,
-                style: TextStyle(
-                    color: index % 2 == 1 ? Colors.white : Colors.white),
+                style: context.textTheme.bodyText1!
+                    .copyWith(color: context.colors.primaryVariant),
               ),
               subtitle: listModel.dueDate != ""
                   ? Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.date_range,
                           size: 12.0,
-                          color: index % 2 == 1 ? Colors.white : Colors.white,
                         ),
                         const SizedBox(
                           width: 5.0,
                         ),
                         Text(
                           listModel.dueDate!,
-                          style: TextStyle(
-                            color: index % 2 == 1 ? Colors.white : Colors.white,
-                            fontSize: 10.0,
-                          ),
+                          style: context.textTheme.caption!
+                              .copyWith(color: context.colors.surface),
                         ),
                         const SizedBox(
                           width: 5.0,
@@ -79,8 +75,8 @@ class TaskListTile extends StatelessWidget {
                   _taskListManager.getDone(snapshot);
                   return Text(
                     "${_taskListManager.completedCount}/${snapshot.data.docs.length}",
-                    style: TextStyle(
-                        color: index % 2 == 1 ? Colors.white : Colors.white),
+                    style: context.textTheme.caption!
+                        .copyWith(color: context.colors.surface),
                   );
                 },
               ),

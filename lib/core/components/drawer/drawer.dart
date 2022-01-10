@@ -13,14 +13,15 @@ class HomeDrawer extends StatelessWidget {
       width: context.width / 2,
       child: Drawer(
           child: Container(
-        color: Colors.indigoAccent,
+        color: context.colors.secondaryVariant,
         child: ListView(
           children: [
-            const ListTile(
+            ListTile(
               title: CircleAvatar(
-                child: Icon(
+                child: const Icon(
                   Icons.person,
                 ),
+                backgroundColor: context.colors.primary,
               ),
             ),
             ListTile(

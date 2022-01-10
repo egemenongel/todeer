@@ -28,9 +28,13 @@ class HomeView extends StatelessWidget {
             borderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
             gradient: LinearGradient(
               colors: [
-                Color(0xffCA6357),
-                Color(0xffF7766A),
+                Color(0xffffffff),
+                Color(0xffeeeeee),
               ],
+              // colors: [
+              //   Color(0xffCA6357),
+              //   Color(0xffF7766A),
+              // ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),

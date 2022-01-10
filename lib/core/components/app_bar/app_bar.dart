@@ -14,6 +14,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 0,
       actions: [
         IconButton(
             splashColor: Colors.transparent,
@@ -21,21 +22,13 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             onPressed: () {
               scaffoldKey!.currentState!.openEndDrawer();
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.menu_rounded,
-              color: Colors.white,
+              color: context.colors.secondaryVariant,
             )),
       ],
       toolbarHeight: context.appBarHeight,
-      backgroundColor: context.colors.onSecondary,
-      title: SizedBox(
-        height: context.logoHeight,
-        child: const Image(
-          fit: BoxFit.fitWidth,
-          color: Colors.white,
-          image: AssetImage("images/icons/24.png"),
-        ),
-      ),
+      backgroundColor: context.colors.secondary,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
         bottomRight: Radius.circular(40),

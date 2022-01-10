@@ -14,7 +14,6 @@ ThemeData appTheme = ThemeData.from(
         onSurface: const Color(0xffffffff),
       ),
 ).copyWith(
-  textTheme: TextTheme(headline2: TextStyle(color: Colors.deepPurple[700])),
   inputDecorationTheme: const InputDecorationTheme(
     fillColor: Color(0xffF7766A),
     labelStyle: TextStyle(
