@@ -27,8 +27,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             )),
       ],
       toolbarHeight: context.appBarHeight,
-      backgroundColor: const Color(0xffF31715),
-      shadowColor: Colors.indigo,
+      backgroundColor: context.colors.onSecondary,
       title: SizedBox(
         height: context.logoHeight,
         child: const Image(

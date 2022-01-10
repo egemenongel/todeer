@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:to_deer/features/views/auth/login/login_view.dart';
 import 'package:to_deer/features/views/auth/sign_up/sign_up_view.dart';
 
-import 'package:to_deer/features/views/home/home_view.dart';
+import 'package:to_deer/features/views/home/home/home_view.dart';
 
 class AuthWrapper extends StatefulWidget {
   const AuthWrapper({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
   Widget build(BuildContext context) {
     final user = context.watch<User?>();
     if (user != null) {
-      return HomePage();
+      return HomeView();
     }
     if (showLogin) {
       return LoginPage(toggleCallback: toggle);

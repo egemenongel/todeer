@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/features/views/home/home_view.dart';
+import 'package:to_deer/features/views/home/home/home_view.dart';
 
 class EmailVerificationPage extends StatefulWidget {
   EmailVerificationPage({
@@ -29,7 +29,7 @@ class _EmailVerificationState extends State<EmailVerificationPage> {
     final user = context.watch<User?>();
     if (user!.emailVerified) {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context, MaterialPageRoute(builder: (context) => HomeView()));
     }
     return Scaffold(
         body: Center(

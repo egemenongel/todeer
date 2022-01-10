@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:to_deer/core/components/task_form/date_field.dart';
 import 'package:to_deer/core/contants/form_constants.dart';
 import 'package:to_deer/features/models/list.dart';
-import 'package:to_deer/features/views/add_tasks/add_tasks_view.dart';
+import 'package:to_deer/features/views/home/add_tasks/add_tasks_view.dart';
 
 class AddListView extends StatelessWidget {
   AddListView({Key? key}) : super(key: key);

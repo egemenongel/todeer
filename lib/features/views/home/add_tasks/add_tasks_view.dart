@@ -5,8 +5,8 @@ import 'package:to_deer/features/models/list.dart';
 import 'package:to_deer/features/models/task.dart';
 import 'package:to_deer/features/utils/form_manager.dart';
 import 'package:to_deer/features/utils/task_list_manager.dart';
-import 'package:to_deer/features/views/add_tasks/bottom_app_bar.dart';
-import 'package:to_deer/features/views/add_tasks/current_list.dart';
+import 'package:to_deer/features/views/home/add_tasks/bottom_app_bar.dart';
+import 'package:to_deer/features/views/home/add_tasks/current_list.dart';
 
 class AddTasksView extends StatefulWidget {
   const AddTasksView({Key? key, required this.list}) : super(key: key);

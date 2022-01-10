@@ -1,27 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:to_deer/core/components/task_form/task_form.dart';
 import 'package:to_deer/core/contants/form_constants.dart';
 import 'package:to_deer/core/extension/context_extension.dart';
 
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:to_deer/features/models/task.dart';
-import 'package:to_deer/features/views/list/dialogs/edit_task_dialog.dart';
+import 'package:to_deer/features/services/database_service.dart';
 
 class TaskTile extends StatelessWidget {
-  // ignore: use_key_in_widget_constructors
-  const TaskTile({
+  TaskTile({
+    Key? key,
     required this.index,
     required this.checkboxCallback,
     required this.deleteCallback,
     required this.sortedList,
     required this.task,
-  });
-
+  }) : super(key: key);
   final int index;
   final Query sortedList;
   final TaskModel task;
   final void Function(bool?)? checkboxCallback;
   final void Function()? deleteCallback;
+  final DatabaseService database = DatabaseService();
   @override
   Widget build(BuildContext context) {
     return Slidable(
@@ -157,10 +158,11 @@ class TaskTile extends StatelessWidget {
         SlideAction(
           onTap: () => showDialog(
             context: context,
-            builder: (_) => EditTaskDialog(
-              index: index,
-              sortedList: sortedList,
-            ),
+            builder: (_) => buildEditTaskDialog(context),
+            // EditTaskDialog(
+            //   index: index,
+            //   sortedList: sortedList,
+            // ),
           ),
           child: const Icon(
             Icons.mode_edit_outlined,
@@ -187,6 +189,86 @@ class TaskTile extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  buildEditTaskDialog(BuildContext context) {
+    final taskTitle = TextEditingController();
+    final startTime = TextEditingController();
+    final finishTime = TextEditingController();
+    final _formKey = GlobalKey<FormState>();
+    final duration = TextEditingController();
+    final dueDate = TextEditingController();
+    final notes = TextEditingController();
+    return StreamBuilder(
+      stream: sortedList.snapshots(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        //SET INITIAL VALUES
+        var task = snapshot.data.docs[index];
+        taskTitle.text = task["title"];
+        startTime.text = task["startTime"];
+        finishTime.text = task["finishTime"];
+        duration.text = task["duration"];
+        dueDate.text = task["dueDate"];
+        notes.text = task["notes"];
+        return AlertDialog(
+          scrollable: true,
+          backgroundColor: Colors.red,
+          insetPadding: const EdgeInsets.symmetric(horizontal: 20.0),
+          contentPadding: EdgeInsets.zero,
+          titlePadding: const EdgeInsets.all(10.0),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              side: const BorderSide(
+                color: Colors.red,
+              )),
+          content: TaskForm(
+            formKey: _formKey,
+            taskTitle: taskTitle,
+            startTime: startTime,
+            finishTime: finishTime,
+            duration: duration,
+            dueDate: dueDate,
+            notes: notes,
+          ),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    database.editTask(
+                        task,
+                        TaskModel(
+                          title: taskTitle.text,
+                          startTime: startTime.text,
+                          finishTime: finishTime.text,
+                          duration: duration.text,
+                          dueDate: dueDate.text,
+                          notes: notes.text,
+                          timeStamp: task["timeStamp"], //To make it same
+                          isCompleted: task["isCompleted"],
+                        ));
+                    Navigator.pop(context);
+                  }
+                },
+                child: const Text(
+                  "Edit",
+                  style: TextStyle(color: Colors.white),
+                )),
+            TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text(
+                  "Cancel",
+                  style: TextStyle(color: Colors.white),
+                ))
+          ],
+          actionsAlignment: MainAxisAlignment.spaceBetween,
+        );
+      },
     );
   }
 }
