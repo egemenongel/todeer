@@ -23,15 +23,7 @@ class HomeView extends StatelessWidget {
         preferredSize: context.appBarSize,
       ),
       body: buildLists(context),
-      floatingActionButton: FloatingActionButton(
-        heroTag: null,
-        child: const Icon(Icons.add),
-        tooltip: "New list",
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddListView()));
-        },
-      ),
+      floatingActionButton: buildFAB(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
@@ -105,6 +97,18 @@ class HomeView extends StatelessWidget {
                     ],
                   ))),
         ],
+      ),
+    );
+  }
+
+  FloatingActionButton buildFAB(BuildContext context) {
+    return FloatingActionButton(
+      heroTag: null,
+      child: const Icon(Icons.add),
+      tooltip: "New list",
+      onPressed: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AddListView()),
       ),
     );
   }

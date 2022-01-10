@@ -10,7 +10,7 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.width / 3,
+      width: context.width / 2,
       child: Drawer(
           child: Container(
         color: Colors.indigoAccent,
