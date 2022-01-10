@@ -22,82 +22,69 @@ class HomeView extends StatelessWidget {
         scaffoldKey: _key,
         preferredSize: context.appBarSize,
       ),
-      body: buildLists(context),
+      body: Container(
+          padding: context.paddingNormal,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
+            gradient: LinearGradient(
+              colors: [
+                Color(0xffCA6357),
+                Color(0xffF7766A),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: Column(
+            children: [
+              StreamBuilder(
+                stream: database.listsCollection.snapshots(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.red,
+                      ),
+                    );
+                  }
+                  return Expanded(
+                    child: snapshot.data.docs.length == 0
+                        ? buildEmptyList(context)
+                        : buildLists(snapshot),
+                  );
+                },
+              ),
+            ],
+          )),
       floatingActionButton: buildFAB(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 
-  buildLists(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
-        // color: Color(0xffF7766A),
-        gradient: LinearGradient(
-          colors: [
-            Color(0xffCA6357),
-            Color(0xffF7766A),
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
-      child: Column(
-        children: [
-          Expanded(
-              child: Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      StreamBuilder(
-                        stream: database.listsCollection.snapshots(),
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
-                          if (!snapshot.hasData) {
-                            return const Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.red,
-                              ),
-                            );
-                          }
-                          return Expanded(
-                            child: snapshot.data.docs.length == 0
-                                ? Center(
-                                    child: Text(
-                                    "You don't have any list. Add a new list to start",
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                      color: context.colors.onSecondary,
-                                    ),
-                                  ))
-                                : ListView.separated(
-                                    itemCount: snapshot.data.docs.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      var list = snapshot.data.docs[index];
-                                      ListModel listModel = ListModel(
-                                          title: list["title"],
-                                          dueDate: list["dueDate"]);
-                                      return TaskListTile(
-                                        listModel: listModel,
-                                        list: list,
-                                        index: index,
-                                      );
-                                    },
-                                    separatorBuilder:
-                                        (BuildContext context, int index) {
-                                      return const Divider(
-                                          height: 20,
-                                          color: Colors.transparent);
-                                    },
-                                  ),
-                          );
-                        },
-                      ),
-                    ],
-                  ))),
-        ],
-      ),
+  Center buildEmptyList(BuildContext context) {
+    return Center(
+        child: Text(
+      "You don't have any list. Add a new list to start",
+      style: context.textTheme.headline5,
+    ));
+  }
+
+  ListView buildLists(AsyncSnapshot<dynamic> snapshot) {
+    return ListView.separated(
+      itemCount: snapshot.data.docs.length,
+      itemBuilder: (BuildContext context, int index) {
+        var list = snapshot.data.docs[index];
+        ListModel listModel =
+            ListModel(title: list["title"], dueDate: list["dueDate"]);
+        return TaskListTile(
+          listModel: listModel,
+          list: list,
+          index: index,
+        );
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return const Divider(height: 20, color: Colors.transparent);
+      },
     );
   }
 
