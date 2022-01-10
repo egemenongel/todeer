@@ -20,5 +20,6 @@ ThemeData appTheme = ThemeData.from(
     labelStyle: TextStyle(
       color: Colors.white,
     ),
+    iconColor: Color(0xffffffff),
   ),
 );
