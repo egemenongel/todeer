@@ -28,11 +28,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             )),
       ],
       toolbarHeight: context.appBarHeight,
-      backgroundColor: context.colors.secondary,
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-        bottomRight: Radius.circular(40),
-      )),
+      backgroundColor: context.colors.primary,
     );
   }
 }

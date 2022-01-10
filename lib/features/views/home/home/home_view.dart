@@ -16,7 +16,6 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
-      extendBodyBehindAppBar: true,
       endDrawer: const HomeDrawer(),
       appBar: HomeAppBar(
         scaffoldKey: _key,
@@ -25,7 +24,6 @@ class HomeView extends StatelessWidget {
       body: Container(
           padding: context.paddingNormal,
           decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
             gradient: LinearGradient(
               colors: [
                 Color(0xffffffff),
@@ -41,22 +39,39 @@ class HomeView extends StatelessWidget {
           ),
           child: Column(
             children: [
-              StreamBuilder(
-                stream: database.listsCollection.snapshots(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (!snapshot.hasData) {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.red,
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: context.paddingNormalHorizontal,
+                  child: Row(
+                    children: [
+                      Text(
+                        "Lists",
+                        style: context.textTheme.headline5!
+                            .copyWith(color: context.colors.primary),
                       ),
-                    );
-                  }
-                  return Expanded(
-                    child: snapshot.data.docs.length == 0
+                    ],
+                  ),
+                ),
+              ),
+              const Spacer(),
+              Expanded(
+                flex: 25,
+                child: StreamBuilder(
+                  stream: database.listsCollection.snapshots(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.red,
+                        ),
+                      );
+                    }
+                    return snapshot.data.docs.length == 0
                         ? buildEmptyList(context)
-                        : buildLists(snapshot),
-                  );
-                },
+                        : buildLists(snapshot);
+                  },
+                ),
               ),
             ],
           )),
