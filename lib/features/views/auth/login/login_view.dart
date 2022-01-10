@@ -41,8 +41,11 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             children: [
               Expanded(
-                flex: 16,
+                flex: 11,
                 child: buildLogo(),
+              ),
+              const Spacer(
+                flex: 2,
               ),
               Expanded(
                 flex: 7,
@@ -57,7 +60,6 @@ class _LoginPageState extends State<LoginPage> {
                 child: buildErrorText(),
               ),
               Expanded(
-                flex: 1,
                 child: buildDivider(context),
               ),
               Expanded(
@@ -65,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: buildSignUpButton(context),
               ),
               const Spacer(
-                flex: 2,
+                flex: 4,
               ),
             ],
           ),
@@ -74,10 +76,23 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Image buildLogo() {
-    return Image.asset(
-      "images/icons/24.png",
-      color: Colors.white,
+  SafeArea buildLogo() {
+    return SafeArea(
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            context.normalRadius,
+          ),
+          border: Border.all(
+            color: Colors.white,
+            width: 2,
+          ),
+        ),
+        child: Image.asset(
+          "images/icons/ToDeer.png",
+          color: context.colors.secondary,
+        ),
+      ),
     );
   }
 
@@ -86,55 +101,48 @@ class _LoginPageState extends State<LoginPage> {
       key: _formKey,
       child: Column(
         children: [
-          Expanded(
-            flex: 5,
-            child: TextFormField(
-              controller: emailController,
-              validator: (val) =>
-                  val!.isEmpty ? "Please enter your email" : null,
-              decoration: InputDecoration(
-                filled: true,
-                prefixIcon: const Icon(
-                  Icons.account_circle_rounded,
-                  color: Colors.white,
-                ),
-                labelText: "E-mail",
-                border: FormConstants.authFormBorder(),
-                enabledBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                    borderSide: BorderSide(
-                      color: Color(0xffB9584F),
-                    )),
-                focusedBorder: FormConstants.authFormBorder(),
+          TextFormField(
+            controller: emailController,
+            validator: (val) => val!.isEmpty ? "Please enter your email" : null,
+            decoration: InputDecoration(
+              filled: true,
+              prefixIcon: const Icon(
+                Icons.account_circle_rounded,
               ),
-              textInputAction: TextInputAction.next,
+              labelText: "E-mail",
+              border: FormConstants.authFormBorder(),
+              enabledBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
+                ),
+                borderSide: BorderSide(
+                  color: Color(0xffB9584F),
+                ),
+              ),
+              focusedBorder: FormConstants.authFormBorder(),
             ),
+            textInputAction: TextInputAction.next,
           ),
-          Expanded(
-            flex: 5,
-            child: TextFormField(
-              controller: passwordController,
-              validator: (val) =>
-                  val!.isEmpty ? "Please enter your password" : null,
-              decoration: InputDecoration(
-                filled: true,
-                prefixIcon: const Icon(
-                  Icons.vpn_key_rounded,
-                  color: Colors.white,
-                ),
-                labelText: "Password",
-                border: FormConstants.authFormBorder(),
-                enabledBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                    borderSide: BorderSide(
-                      color: Color(0xffB9584F),
-                    )),
-                focusedBorder: FormConstants.authFormBorder(),
+          const Spacer(),
+          TextFormField(
+            controller: passwordController,
+            validator: (val) =>
+                val!.isEmpty ? "Please enter your password" : null,
+            decoration: InputDecoration(
+              filled: true,
+              prefixIcon: const Icon(
+                Icons.vpn_key_rounded,
               ),
+              labelText: "Password",
+              border: FormConstants.authFormBorder(),
+              enabledBorder: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  borderSide: BorderSide(
+                    color: Color(0xffB9584F),
+                  )),
+              focusedBorder: FormConstants.authFormBorder(),
             ),
           ),
         ],
@@ -177,16 +185,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  TextButton buildSignUpButton(BuildContext context) {
-    return TextButton(
-      onPressed: widget.toggleCallback,
-      child: Text(
-        "Sign Up",
-        style: TextStyle(color: context.colors.secondary),
-      ),
-    );
-  }
-
   Row buildDivider(BuildContext context) {
     return Row(
       children: [
@@ -213,6 +211,16 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ],
+    );
+  }
+
+  TextButton buildSignUpButton(BuildContext context) {
+    return TextButton(
+      onPressed: widget.toggleCallback,
+      child: Text(
+        "Sign Up",
+        style: TextStyle(color: context.colors.secondary),
+      ),
     );
   }
 }
