@@ -7,7 +7,7 @@ import 'package:to_deer/features/services/database_service.dart';
 import 'package:to_deer/features/utils/task_list_manager.dart';
 import 'package:to_deer/features/views/home/delete_list_dialog.dart';
 import 'package:to_deer/features/views/home/edit_list_dialog.dart';
-import 'package:to_deer/features/views/list/list_page.dart';
+import 'package:to_deer/features/views/list/task_list_view.dart';
 
 class TaskListTile extends StatelessWidget {
   const TaskListTile({

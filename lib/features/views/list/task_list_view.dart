@@ -5,10 +5,10 @@ import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/features/models/task.dart';
 import 'package:to_deer/features/services/database_service.dart';
 import 'package:to_deer/features/utils/task_list_manager.dart';
-import 'package:to_deer/features/views/add_list/add_list_page.dart';
+import 'package:to_deer/features/views/add_list/add_list_view.dart';
 import 'package:to_deer/features/views/list/dialogs/add_task_dialog.dart';
 import 'package:to_deer/features/views/list/dialogs/delete_task_dialog.dart';
-import 'package:to_deer/features/views/list/report_widget.dart';
+import 'package:to_deer/features/views/list/report_sheet.dart';
 import 'package:to_deer/features/views/list/task_tile.dart';
 
 class ListPage extends StatelessWidget {
@@ -123,7 +123,7 @@ class ListPage extends StatelessWidget {
                               showModalBottomSheet(
                                 backgroundColor: Colors.transparent,
                                 context: context,
-                                builder: (context) => ReportWidget(
+                                builder: (context) => ReportSheet(
                                     list: list, title: list!.get("title")),
                               );
                             },
@@ -141,7 +141,7 @@ class ListPage extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => AddListPage()));
+                                      builder: (context) => AddListView()));
                             },
                           ),
                         ],

@@ -8,14 +8,14 @@ import 'package:to_deer/features/utils/task_list_manager.dart';
 import 'package:to_deer/features/views/add_tasks/bottom_app_bar.dart';
 import 'package:to_deer/features/views/add_tasks/current_list.dart';
 
-class AddTasksPage extends StatefulWidget {
-  const AddTasksPage({Key? key, required this.list}) : super(key: key);
+class AddTasksView extends StatefulWidget {
+  const AddTasksView({Key? key, required this.list}) : super(key: key);
   final ListModel list;
   @override
-  State<AddTasksPage> createState() => _AddTasksPageState();
+  State<AddTasksView> createState() => _AddTasksViewState();
 }
 
-class _AddTasksPageState extends State<AddTasksPage> {
+class _AddTasksViewState extends State<AddTasksView> {
   final taskTitle = TextEditingController();
   final startTime = TextEditingController();
   final finishTime = TextEditingController();

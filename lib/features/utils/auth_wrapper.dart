@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_deer/features/views/auth/sign_up/sign_up_page.dart';
+import 'package:to_deer/features/views/auth/login/login_view.dart';
+import 'package:to_deer/features/views/auth/sign_up/sign_up_view.dart';
 
-import 'package:to_deer/features/views/home/home_page.dart';
-import 'package:to_deer/views/authenticate/login/login_page.dart';
+import 'package:to_deer/features/views/home/home_view.dart';
 
 class AuthWrapper extends StatefulWidget {
   const AuthWrapper({Key? key}) : super(key: key);

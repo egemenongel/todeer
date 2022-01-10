@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/features/utils/task_list_manager.dart';
-import 'package:to_deer/features/views/add_list/add_list_page.dart';
+import 'package:to_deer/features/views/add_list/add_list_view.dart';
 import 'package:to_deer/features/views/list/dialogs/add_task_dialog.dart';
 
-class ReportWidget extends StatelessWidget {
-  const ReportWidget({
+class ReportSheet extends StatelessWidget {
+  const ReportSheet({
     Key? key,
     required this.list,
     required this.title,
@@ -133,7 +133,7 @@ class ReportWidget extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AddListPage()));
+                                builder: (context) => AddListView()));
                       },
                     ),
                   ],
