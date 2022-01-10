@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 class FormConstants {
   static OutlineInputBorder authFormBorder() {
     return const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(20)));
+      borderRadius: BorderRadius.all(
+        Radius.circular(20),
+      ),
+      borderSide: BorderSide(
+        color: Colors.white,
+      ),
+    );
   }
 
   static OutlineInputBorder taskFormBorder() {
