@@ -11,7 +11,7 @@ class AddTaskDialog extends StatelessWidget {
   final taskTitle = TextEditingController();
   final startTime = TextEditingController();
   final finishTime = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+  static final _formKey = GlobalKey<FormState>();
   final duration = TextEditingController();
   final dueDate = TextEditingController();
   final notes = TextEditingController();

@@ -40,14 +40,14 @@ class HomeView extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Padding(
                   padding: context.paddingNormalHorizontal,
                   child: Row(
                     children: [
                       Text(
                         "Lists",
-                        style: context.textTheme.headline5!
+                        style: context.textTheme.headline4!
                             .copyWith(color: context.colors.primary),
                       ),
                     ],
@@ -112,10 +112,15 @@ class HomeView extends StatelessWidget {
       heroTag: null,
       child: const Icon(Icons.add),
       tooltip: "New list",
-      onPressed: () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => AddListView()),
+      onPressed: () => showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        builder: (context) => AddListView(),
       ),
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => AddListView()),
+      // ),
     );
   }
 }

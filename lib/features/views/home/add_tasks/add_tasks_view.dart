@@ -22,7 +22,7 @@ class _AddTasksViewState extends State<AddTasksView> {
   final duration = TextEditingController();
   final dueDate = TextEditingController();
   final notes = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+  static final _formKey = GlobalKey<FormState>();
 
   void _clearForm() {
     _formKey.currentState!.reset();

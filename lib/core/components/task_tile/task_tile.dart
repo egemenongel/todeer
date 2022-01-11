@@ -28,9 +28,11 @@ class TaskTile extends StatelessWidget {
     return Slidable(
       child: Container(
         decoration: BoxDecoration(
-            color: (index % 2) == 1 ? Colors.blue[100] : Colors.white,
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(10), topLeft: Radius.circular(10))),
+          color: context.colors.secondary,
+          borderRadius: BorderRadius.all(
+            context.normalRadius,
+          ),
+        ),
         child: ListTile(
             horizontalTitleGap: 2.0,
             title: Column(

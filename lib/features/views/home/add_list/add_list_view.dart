@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:to_deer/core/components/task_form/date_field.dart';
 import 'package:to_deer/core/contants/form_constants.dart';
 import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/features/models/list.dart';
@@ -9,34 +8,35 @@ class AddListView extends StatelessWidget {
   AddListView({Key? key}) : super(key: key);
   final listTitle = TextEditingController();
   final deadline = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+  static final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        padding: context.paddingMediumHorizontal,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Spacer(
-              flex: 6,
-            ),
-            Expanded(flex: 3, child: buildForm()),
-            Expanded(
-              flex: 1,
-              child: buildNextButton(context),
-            ),
-            const Spacer(
-              flex: 6,
-            ),
-          ],
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(context.lowRadius),
+        color: context.colors.secondary,
+      ),
+      height: context.height / 2,
+      padding: EdgeInsets.only(
+          bottom: context.mediaQuery.viewInsets.bottom,
+          left: context.normalValue,
+          right: context.normalValue,
+          top: context.normalValue),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Flexible(flex: 1, child: buildForm(context)),
+          Flexible(
+            flex: 1,
+            child: buildNextButton(context),
+          ),
+        ],
       ),
     );
   }
 
-  Form buildForm() {
+  Form buildForm(BuildContext context) {
     return Form(
       key: _formKey,
       child: Column(
@@ -45,6 +45,9 @@ class AddListView extends StatelessWidget {
             controller: listTitle,
             decoration: InputDecoration(
               labelText: "List Title",
+              labelStyle: context.textTheme.bodyText1!.copyWith(
+                color: context.colors.primary,
+              ),
               enabledBorder: listTitle.text.isNotEmpty
                   ? FormConstants.taskFormBorder()
                   : null,
@@ -54,11 +57,11 @@ class AddListView extends StatelessWidget {
             validator: (val) =>
                 listTitle.text.isEmpty ? "Please enter a list title" : null,
           ),
-          const Spacer(),
-          DateField(
-            labelText: "Deadline",
-            controller: deadline,
-          ),
+          // const Spacer(),
+          // DateField(
+          //   labelText: "Deadline",
+          //   controller: deadline,
+          // ),
         ],
       ),
     );

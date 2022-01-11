@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_deer/core/components/app_bar/app_bar.dart';
 import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/features/models/task.dart';
 import 'package:to_deer/features/services/database_service.dart';
@@ -24,135 +25,148 @@ class TaskListView extends StatelessWidget {
           );
         }
         return Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            toolbarHeight: context.appBarHeight,
-            backgroundColor: Colors.red,
-            shadowColor: Colors.indigo,
-            title: Text(
-              "${list!["title"]}",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: context.appBarHeight / 3,
-                overflow: TextOverflow.ellipsis,
+          appBar: HomeAppBar(preferredSize: context.appBarSize),
+          // AppBar(
+          //   elevation: 0,
+          //   toolbarHeight: context.appBarHeight,
+          //   backgroundColor: Colors.red,
+          //   shadowColor: Colors.indigo,
+          //   title: Text(
+          //     "${list!["title"]}",
+          //     style: TextStyle(
+          //       color: Colors.white,
+          //       fontSize: context.appBarHeight / 3,
+          //       overflow: TextOverflow.ellipsis,
+          //     ),
+          //   ),
+          // ),
+          body: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xffffffff),
+                    Color(0xffeeeeee),
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: buildList(context, snapshot, databaseService),
+                  ),
+                  buildBottomBar(context, snapshot),
+                ],
+              )),
+        );
+      },
+    );
+  }
+
+  GestureDetector buildBottomBar(
+      BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+    return GestureDetector(
+      onVerticalDragUpdate: (sheet) => showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) => buildReportSheet(context),
+      ),
+      child: Container(
+        height: context.bottomBar,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+          color: context.colors.primary,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            FloatingActionButton(
+              tooltip: "Add task",
+              heroTag: null,
+              onPressed: () => showDialog(
+                context: context,
+                builder: (_) => AddTaskDialog(list: list!),
+              ),
+              foregroundColor: context.colors.primary,
+              child: const Icon(
+                Icons.add,
               ),
             ),
-          ),
-          body: Container(
-            color: Colors.red,
-            child: Container(
-                width: context.width,
-                padding: const EdgeInsets.only(top: 20),
-                decoration: const BoxDecoration(
-                  color: Colors.indigo,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10)),
-                ),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: buildList(snapshot, databaseService),
-                    ),
-                    buildBottomBar(context, snapshot),
-                  ],
-                )),
-          ),
-        );
-      },
-    );
-  }
-
-  Container buildBottomBar(
-      BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-    return Container(
-      height: context.bottomBar,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-        color: Colors.indigoAccent,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          FloatingActionButton(
-            tooltip: "Add task",
-            heroTag: null,
-            onPressed: () => showDialog(
-              context: context,
-              builder: (_) => AddTaskDialog(list: list!),
-            ),
-            child: const Icon(
-              Icons.add,
-            ),
-          ),
-          FloatingActionButton(
-            tooltip: "See report",
-            heroTag: null,
-            onPressed: () {
-              Provider.of<TaskListManager>(context, listen: false)
-                  .sumDuration(snapshot.data.docs);
-              showModalBottomSheet(
-                backgroundColor: Colors.transparent,
-                context: context,
-                builder: (context) => buildReportSheet(context),
-              );
-            },
-            child: const Icon(
-              Icons.pending_actions_rounded,
-            ),
-          ),
-          FloatingActionButton(
-            tooltip: "Add list",
-            heroTag: null,
-            child: const Icon(
-              Icons.my_library_add_outlined,
-            ),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AddListView()));
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
-  ListView buildList(
-      AsyncSnapshot<dynamic> snapshot, DatabaseService databaseService) {
-    return ListView.separated(
-      itemCount: snapshot.data.docs.length,
-      itemBuilder: (BuildContext context, int index) {
-        var task = snapshot.data.docs[index];
-        return TaskTile(
-            index: index,
-            task: TaskModel(
-              title: task["title"],
-              startTime: task["startTime"],
-              finishTime: task["finishTime"],
-              duration: task["duration"],
-              isCompleted: task["isCompleted"],
-              dueDate: task["dueDate"],
-              notes: task["notes"],
-            ),
-            sortedList: databaseService.orderedTasks(list!.reference),
-            checkboxCallback: (checkboxState) =>
-                databaseService.checkboxToggle(task, checkboxState!),
-            deleteCallback: () => showDialog(
+            FloatingActionButton(
+              tooltip: "See report",
+              heroTag: null,
+              onPressed: () {
+                Provider.of<TaskListManager>(context, listen: false)
+                    .sumDuration(snapshot.data.docs);
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
                   context: context,
-                  builder: (context) => buildDeleteDialog(context, task),
-                ));
-      },
-      padding: const EdgeInsets.only(
-        left: 10.0,
-        right: 5.0,
+                  builder: (context) => buildReportSheet(context),
+                );
+              },
+              child: const Icon(
+                Icons.pending_actions_rounded,
+              ),
+              foregroundColor: context.colors.primary,
+            ),
+            FloatingActionButton(
+              tooltip: "Add list",
+              heroTag: null,
+              child: const Icon(
+                Icons.my_library_add_outlined,
+              ),
+              foregroundColor: context.colors.primary,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AddListView()));
+              },
+            ),
+          ],
+        ),
       ),
-      separatorBuilder: (BuildContext context, int index) {
-        return const Divider(
-          height: 10,
-          color: Colors.transparent,
-        );
-      },
+    );
+  }
+
+  Padding buildList(BuildContext context, AsyncSnapshot<dynamic> snapshot,
+      DatabaseService databaseService) {
+    return Padding(
+      padding: context.paddingNormal,
+      child: ListView.separated(
+        itemCount: snapshot.data.docs.length,
+        itemBuilder: (BuildContext context, int index) {
+          var task = snapshot.data.docs[index];
+          return TaskTile(
+              index: index,
+              task: TaskModel(
+                title: task["title"],
+                startTime: task["startTime"],
+                finishTime: task["finishTime"],
+                duration: task["duration"],
+                isCompleted: task["isCompleted"],
+                dueDate: task["dueDate"],
+                notes: task["notes"],
+              ),
+              sortedList: databaseService.orderedTasks(list!.reference),
+              checkboxCallback: (checkboxState) =>
+                  databaseService.checkboxToggle(task, checkboxState!),
+              deleteCallback: () => showDialog(
+                    context: context,
+                    builder: (context) => buildDeleteDialog(context, task),
+                  ));
+        },
+        padding: const EdgeInsets.only(
+          left: 10.0,
+          right: 5.0,
+        ),
+        separatorBuilder: (BuildContext context, int index) {
+          return const Divider(
+            height: 10,
+            color: Colors.transparent,
+          );
+        },
+      ),
     );
   }
 
@@ -193,9 +207,9 @@ class TaskListView extends StatelessWidget {
         child: Container(
           height: context.height / 2,
           width: context.width,
-          decoration: const BoxDecoration(
-            color: Colors.indigoAccent,
-            borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+            color: context.colors.primary,
+            borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(10.0),
                 topLeft: Radius.circular(10.0)),
           ),
@@ -220,10 +234,9 @@ class TaskListView extends StatelessWidget {
                 height: 60.0,
                 width: 200.0,
                 decoration: BoxDecoration(
-                    color: Colors.blueGrey,
                     borderRadius: BorderRadius.circular(
-                      10.0,
-                    )),
+                  10.0,
+                )),
                 child: Center(
                   child: Text(
                     "${context.read<TaskListManager>().total} minutes",
@@ -259,7 +272,6 @@ class TaskListView extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
                       topRight: Radius.circular(10)),
-                  color: Colors.indigoAccent,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -280,6 +292,7 @@ class TaskListView extends StatelessWidget {
                                   ),
                                 ));
                       },
+                      foregroundColor: context.colors.primary,
                       child: const Icon(
                         Icons.add,
                       ),
@@ -291,6 +304,7 @@ class TaskListView extends StatelessWidget {
                       child: const Icon(
                         Icons.pending_actions_rounded,
                       ),
+                      foregroundColor: context.colors.primary,
                     ),
                     FloatingActionButton(
                       tooltip: "Add list",
@@ -298,6 +312,7 @@ class TaskListView extends StatelessWidget {
                       child: const Icon(
                         Icons.my_library_add_outlined,
                       ),
+                      foregroundColor: context.colors.primary,
                       onPressed: () {
                         Navigator.pop(context);
                         Navigator.push(
