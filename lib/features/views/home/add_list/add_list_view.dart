@@ -1,39 +1,52 @@
 import 'package:flutter/material.dart';
+
 import 'package:to_deer/core/contants/form_constants.dart';
 import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/features/models/list.dart';
 import 'package:to_deer/features/views/home/add_tasks/add_tasks_view.dart';
 
-class AddListView extends StatelessWidget {
-  AddListView({Key? key}) : super(key: key);
+class AddListView extends StatefulWidget {
+  const AddListView({Key? key}) : super(key: key);
+
+  @override
+  State<AddListView> createState() => _AddListViewState();
+}
+
+class _AddListViewState extends State<AddListView> {
   final listTitle = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
   final deadline = TextEditingController();
-  static final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(context.lowRadius),
-        color: context.colors.secondary,
-      ),
-      height: context.height / 2,
-      padding: EdgeInsets.only(
-          bottom: context.mediaQuery.viewInsets.bottom,
-          left: context.normalValue,
-          right: context.normalValue,
-          top: context.normalValue),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Flexible(flex: 1, child: buildForm(context)),
-          Flexible(
-            flex: 1,
-            child: buildNextButton(context),
-          ),
-        ],
-      ),
-    );
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(context.lowRadius),
+          color: context.colors.secondary,
+        ),
+        padding: EdgeInsets.only(
+            bottom: context.mediaQuery.viewInsets.bottom,
+            left: context.normalValue,
+            right: context.normalValue,
+            top: context.normalValue),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 5,
+                  child: buildForm(context),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: buildNextButton(context),
+                ),
+              ],
+            ),
+          ],
+        ));
   }
 
   Form buildForm(BuildContext context) {
@@ -57,7 +70,32 @@ class AddListView extends StatelessWidget {
             validator: (val) =>
                 listTitle.text.isEmpty ? "Please enter a list title" : null,
           ),
-          // const Spacer(),
+          Row(
+            children: [
+              IconButton(
+                onPressed: () => showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2050),
+                ),
+                icon: const Icon(
+                  Icons.date_range,
+                ),
+              ),
+              IconButton(
+                onPressed: () => showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2050),
+                ),
+                icon: const Icon(
+                  Icons.note_add,
+                ),
+              ),
+            ],
+          ),
           // DateField(
           //   labelText: "Deadline",
           //   controller: deadline,
@@ -67,26 +105,27 @@ class AddListView extends StatelessWidget {
     );
   }
 
-  Row buildNextButton(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ElevatedButton(
-          onPressed: () {
-            if (_formKey.currentState!.validate()) {
-              ListModel list = ListModel(
-                title: listTitle.text,
-                dueDate: deadline.text,
-              );
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => AddTasksView(list: list)));
-            }
-          },
-          child: const Text("Next"),
+  Padding buildNextButton(BuildContext context) {
+    return Padding(
+      padding: context.paddingLow,
+      child: IconButton(
+        onPressed: () {
+          if (_formKey.currentState!.validate()) {
+            ListModel list = ListModel(
+              title: listTitle.text,
+              dueDate: deadline.text,
+            );
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddTasksView(list: list)));
+          }
+        },
+        icon: Icon(
+          Icons.arrow_forward,
+          color: context.colors.primary,
         ),
-      ],
+      ),
     );
   }
 }

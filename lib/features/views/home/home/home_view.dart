@@ -15,6 +15,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       key: _key,
       endDrawer: const HomeDrawer(),
       appBar: HomeAppBar(
@@ -115,7 +116,7 @@ class HomeView extends StatelessWidget {
       onPressed: () => showModalBottomSheet(
         isScrollControlled: true,
         context: context,
-        builder: (context) => AddListView(),
+        builder: (context) => const AddListView(),
       ),
       // Navigator.push(
       //   context,
