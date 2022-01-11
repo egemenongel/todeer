@@ -118,10 +118,10 @@ class TaskListView extends StatelessWidget {
                 Icons.my_library_add_outlined,
               ),
               foregroundColor: context.colors.primary,
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AddListView()));
-              },
+              onPressed: () => showModalBottomSheet(
+                context: context,
+                builder: (context) => const AddListSheet(),
+              ),
             ),
           ],
         ),
@@ -315,10 +315,10 @@ class TaskListView extends StatelessWidget {
                       foregroundColor: context.colors.primary,
                       onPressed: () {
                         Navigator.pop(context);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AddListView()));
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (context) => const AddListSheet());
                       },
                     ),
                   ],

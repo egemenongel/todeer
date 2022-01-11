@@ -5,14 +5,14 @@ import 'package:to_deer/core/extension/context_extension.dart';
 import 'package:to_deer/features/models/list.dart';
 import 'package:to_deer/features/views/home/add_tasks/add_tasks_view.dart';
 
-class AddListView extends StatefulWidget {
-  const AddListView({Key? key}) : super(key: key);
+class AddListSheet extends StatefulWidget {
+  const AddListSheet({Key? key}) : super(key: key);
 
   @override
-  State<AddListView> createState() => _AddListViewState();
+  State<AddListSheet> createState() => _AddListSheetState();
 }
 
-class _AddListViewState extends State<AddListView> {
+class _AddListSheetState extends State<AddListSheet> {
   final listTitle = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final deadline = TextEditingController();
